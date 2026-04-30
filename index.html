@@ -861,6 +861,235 @@
     }
   
     .hero-login input:focus{outline:none;border-color:#111827;box-shadow:0 0 0 3px rgba(17,24,39,.08)}
+    /* ── PRICING AFFIRM NOTE ── */
+    .pricing-affirm-note{
+      font-size:11px;color:var(--gray-400);margin-top:10px;text-align:center;
+    }
+    .pricing-grid{grid-template-columns:repeat(3,1fr)}
+
+    /* ── NAV GHOST BUTTON ── */
+    .topnav-cta-ghost{
+      font-size:13px;font-weight:500;
+      background:transparent;color:var(--gray-700);
+      padding:7px 16px;border-radius:8px;
+      border:1px solid var(--gray-200);
+      transition:all .15s;cursor:pointer;
+    }
+    .topnav-cta-ghost:hover{background:var(--gray-100)}
+
+    /* ── CLIENT LOGIN MODAL ── */
+    .modal-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,0.5);
+      z-index:1000;display:none;align-items:center;justify-content:center;
+      backdrop-filter:blur(4px);
+    }
+    .modal-overlay.open{display:flex}
+    .modal-box{
+      background:#fff;border-radius:20px;padding:40px;
+      width:100%;max-width:420px;margin:20px;
+      box-shadow:0 40px 100px rgba(0,0,0,0.2);
+      position:relative;
+    }
+    .modal-close{
+      position:absolute;top:16px;right:16px;
+      width:32px;height:32px;border-radius:50%;
+      background:var(--gray-100);border:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;color:var(--gray-500);transition:all .15s;
+    }
+    .modal-close:hover{background:var(--gray-200)}
+    .modal-title{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px}
+    .modal-sub{font-size:14px;color:var(--gray-400);margin-bottom:28px;line-height:1.5}
+    .modal-input{
+      width:100%;font-family:inherit;font-size:14px;color:var(--ink);
+      background:#fff;border:1px solid var(--gray-200);
+      border-radius:10px;padding:12px 14px;outline:none;
+      transition:border-color .15s;margin-bottom:12px;
+    }
+    .modal-input:focus{border-color:var(--ink)}
+    .modal-btn{
+      width:100%;padding:13px;background:var(--ink);color:#fff;
+      font-size:14px;font-weight:600;border:none;border-radius:10px;
+      cursor:pointer;transition:all .2s;
+    }
+    .modal-btn:hover{background:#333}
+    .modal-note{font-size:11px;color:var(--gray-400);text-align:center;margin-top:12px}
+
+    /* ── TRANSPARENCY SECTION ── */
+    .transparency-section{background:var(--gray-50);border-top:1px solid var(--gray-200)}
+    .transparency-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;
+      max-width:1000px;margin:0 auto;
+    }
+    .transparency-card{
+      background:#fff;border:1px solid var(--gray-200);
+      border-radius:16px;padding:28px;
+    }
+    .transparency-card-title{
+      font-size:15px;font-weight:700;color:var(--ink);
+      margin-bottom:12px;display:flex;align-items:center;gap:10px;
+    }
+    .transparency-card-icon{
+      width:32px;height:32px;border-radius:8px;
+      background:var(--gray-100);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .transparency-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .transparency-list li{
+      font-size:13.5px;color:var(--gray-600);line-height:1.55;
+      display:flex;align-items:flex-start;gap:8px;
+    }
+    .transparency-list li::before{content:'›';color:var(--gray-400);font-weight:700;font-size:15px;flex-shrink:0;margin-top:0px}
+    .affirm-note-box{
+      background:#faf5ff;border:1px solid #e9d5ff;
+      border-radius:12px;padding:18px 20px;
+      font-size:13.5px;color:#6b21a8;line-height:1.6;
+      max-width:1000px;margin:24px auto 0;
+    }
+
+    /* ── DESIGNER SECTION ── */
+    .designer-section{background:var(--white);border-top:1px solid var(--gray-200)}
+    .designer-inner{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;max-width:1000px;margin:0 auto}
+    .payout-table{
+      width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;
+      border:1px solid var(--gray-200);margin-top:24px;
+    }
+    .payout-table thead{background:var(--gray-900)}
+    .payout-table thead th{
+      padding:12px 16px;font-size:12px;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);
+      text-align:left;
+    }
+    .payout-table tbody tr{border-bottom:1px solid var(--gray-100)}
+    .payout-table tbody tr:last-child{border-bottom:none}
+    .payout-table td{padding:13px 16px;font-size:13.5px;color:var(--gray-700)}
+    .payout-table td:first-child{font-weight:600;color:var(--ink)}
+    .payout-highlight{color:#16a34a;font-weight:700}
+    .designer-form-wrap{
+      background:var(--gray-50);border:1px solid var(--gray-200);
+      border-radius:20px;padding:36px;
+    }
+    .designer-steps{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+    .designer-step{
+      display:flex;align-items:flex-start;gap:12px;
+      font-size:13.5px;color:var(--gray-600);line-height:1.55;
+    }
+    .dstep-num{
+      width:24px;height:24px;border-radius:50%;
+      background:var(--gray-900);color:#fff;
+      font-size:11px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+    }
+
+    /* ── ADMIN PAGE ── */
+    .admin-layout{display:flex;min-height:100vh;background:var(--gray-50)}
+    .admin-sidebar{
+      width:220px;background:#fff;border-right:1px solid var(--gray-200);
+      padding:20px 12px;display:flex;flex-direction:column;position:sticky;top:0;min-height:100vh;
+    }
+    .admin-logo{font-size:15px;font-weight:700;padding:8px 12px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .admin-role-badge{
+      font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;padding:0 12px;margin-bottom:20px;
+    }
+    .admin-nav-link{
+      display:flex;align-items:center;gap:10px;
+      padding:9px 12px;border-radius:8px;
+      font-size:13px;color:var(--gray-500);
+      cursor:pointer;transition:all .15s;margin-bottom:1px;
+    }
+    .admin-nav-link:hover{background:var(--gray-100);color:var(--ink)}
+    .admin-nav-link.active{background:var(--gray-100);color:var(--ink);font-weight:500}
+    .admin-main{flex:1;padding:32px;max-width:1100px}
+    .admin-topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:28px;
+    }
+    .admin-topbar h1{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+    .admin-panels > div{display:none}
+    .admin-panels > div.admin-active{display:block}
+    .admin-section-title{
+      font-size:16px;font-weight:700;color:var(--ink);
+      margin-bottom:16px;padding-bottom:12px;
+      border-bottom:1px solid var(--gray-200);
+    }
+    .admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+    .admin-stat{
+      background:#fff;border:1px solid var(--gray-200);
+      border-radius:12px;padding:20px;
+    }
+    .admin-stat-val{font-size:36px;font-weight:700;letter-spacing:-0.03em;color:var(--ink);margin-bottom:4px}
+    .admin-stat-label{font-size:12px;color:var(--gray-400)}
+    .admin-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--gray-200)}
+    .admin-table thead{background:var(--gray-50)}
+    .admin-table thead th{padding:11px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-400);text-align:left;border-bottom:1px solid var(--gray-200)}
+    .admin-table tbody tr{border-bottom:1px solid var(--gray-50);transition:background .1s}
+    .admin-table tbody tr:last-child{border-bottom:none}
+    .admin-table tbody tr:hover{background:var(--gray-50)}
+    .admin-table td{padding:12px 16px;font-size:13px;color:var(--gray-700)}
+    .admin-table td:first-child{font-weight:500;color:var(--ink)}
+    .team-badge{
+      display:inline-block;font-size:10px;font-weight:700;
+      padding:3px 10px;border-radius:99px;letter-spacing:0.05em;
+    }
+    .team-red{background:#fee2e2;color:#dc2626}
+    .team-teal{background:#ccfbf1;color:#0f766e}
+    .team-grey{background:#f3f4f6;color:#374151}
+    .status-active{background:#f0fdf4;color:#16a34a}
+    .status-pending{background:#fef9c3;color:#854d0e}
+    .status-inactive{background:#f3f4f6;color:#9ca3af}
+    .affirm-badge{background:#faf5ff;color:#7c3aed;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px}
+    .admin-action-btn{
+      font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;
+      border:1px solid var(--gray-200);background:#fff;cursor:pointer;
+      transition:all .15s;
+    }
+    .admin-action-btn:hover{border-color:var(--ink);background:var(--gray-50)}
+    .admin-action-btn.danger{color:#dc2626;border-color:#fee2e2}
+    .admin-action-btn.danger:hover{background:#fee2e2}
+    .admin-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    .admin-input,.admin-select{
+      font-family:inherit;font-size:13px;color:var(--ink);
+      background:#fff;border:1px solid var(--gray-200);
+      border-radius:8px;padding:9px 12px;outline:none;width:100%;
+      transition:border-color .15s;
+    }
+    .admin-input:focus,.admin-select:focus{border-color:var(--ink)}
+    .admin-btn{
+      font-size:13px;font-weight:600;padding:10px 20px;
+      background:var(--ink);color:#fff;border:none;
+      border-radius:8px;cursor:pointer;transition:all .15s;
+    }
+    .admin-btn:hover{background:#333}
+    .admin-login-screen{
+      position:fixed;inset:0;background:var(--gray-50);
+      display:flex;align-items:center;justify-content:center;
+      z-index:200;
+    }
+    .admin-login-box{
+      background:#fff;border:1px solid var(--gray-200);
+      border-radius:20px;padding:48px;
+      width:100%;max-width:400px;
+      box-shadow:var(--shadow-lg);text-align:center;
+    }
+    .admin-login-box h2{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+    .admin-login-box p{font-size:14px;color:var(--gray-400);margin-bottom:28px}
+    .admin-login-mock-note{
+      font-size:11px;color:var(--gray-400);margin-top:14px;
+      border:1px dashed var(--gray-200);border-radius:6px;padding:8px 12px;
+    }
+
+    @media(max-width:1024px){
+      .transparency-grid{grid-template-columns:1fr}
+      .designer-inner{grid-template-columns:1fr;gap:40px}
+      .admin-stats{grid-template-columns:1fr 1fr}
+      .admin-sidebar{display:none}
+    }
+    @media(max-width:640px){
+      .pricing-grid{grid-template-columns:1fr!important}
+      .admin-stats{grid-template-columns:1fr}
+    }
     #chat-history{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;max-height:380px;overflow:auto}
     .msg-designer,.msg-client{padding:12px 14px;border-radius:12px}
     .msg-designer{background:#f3f4f6;color:#111}
@@ -902,12 +1131,15 @@ const IMGS = {
     </div>
     <div class="topnav-links">
       <a href="#services-section">Services</a>
-      <a href="#process-section">Process</a>
       <a href="#pricing-section">Pricing</a>
-      <a href="#enterprise-section">Enterprise</a>
+      <a href="#transparency-section">Transparency</a>
+      <a href="#designer-section">Design With Us</a>
       <a href="#contact-section">Contact</a>
     </div>
-    <a href="#contact-section" class="topnav-cta">Start a Project</a>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="topnav-cta-ghost" onclick="openLoginModal()">Client Login</button>
+      <a href="#contact-section" class="topnav-cta">Start a Project</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -927,18 +1159,19 @@ const IMGS = {
         Creative Studio · Websites · Branding · Content
       </div>
 
-      <h1 class="hero-h1">We build websites<br>for businesses ready<br>to look <span class="grad-text">serious.</span></h1>
+      <h1 class="hero-h1">Human Crafted.<br><span class="grad-text">Brand Better.</span></h1>
 
-      <p class="hero-sub">We Design Studio helps small businesses turn rough ideas into polished websites, brand visuals, and promotional assets built to make the business look credible, clear, and ready for customers.</p>
+      <p class="hero-sub">We Design Studio builds websites, brand systems, and promotional assets for small businesses that need to look clear, credible, and ready for customers.</p>
+
+      <p style="font-size:15px;line-height:1.65;color:var(--gray-400);max-width:440px;margin-bottom:32px">Whether you are starting from zero or upgrading an active business, we help turn your ideas into a professional visual system.</p>
 
       <div class="hero-actions">
         <a href="#contact-section" class="btn-primary">
           Start a Project
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </a>
-        <a href="#services-section" class="btn-secondary">
-          See our services
-        </a>
+        <a href="#pricing-section" class="btn-secondary">View Pricing</a>
+        <a href="#designer-section" class="btn-secondary">Design With Us</a>
       </div>
     </div>
 
@@ -1171,57 +1404,113 @@ const IMGS = {
   <section id="pricing-section" class="pricing-section">
     <div class="pricing-header">
       <div class="section-label">Pricing</div>
-      <h2 class="section-h2">Clear tiers. No surprises.</h2>
-      <p class="section-sub" style="text-align:center;margin:0 auto;margin-top:8px">Every project is scoped to what you actually need. No fluff, no bloat — just the work that moves your business forward.</p>
+      <h2 class="section-h2">Clear baselines.<br>Honest scope.</h2>
+      <p class="section-sub" style="text-align:center;margin:0 auto;margin-top:8px">Every price listed is a starting point. Final cost depends on page count, content needs, functionality, branding, and promotional assets included. No surprises — scope is agreed before work begins.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 20px;max-width:520px;margin-left:auto;margin-right:auto">
+        <svg width="18" height="18" fill="none" stroke="#7c3aed" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+        <span style="font-size:13px;color:#374151"><strong>Affirm payment options available</strong> on eligible projects. <a href="#transparency-section" style="color:#7c3aed;text-decoration:underline">Learn more about payment plans.</a></span>
+      </div>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr);max-width:1040px">
+
       <div class="pricing-card">
-        <div class="pricing-tier">Starter</div>
-        <div class="pricing-price" style="font-size:32px;letter-spacing:-0.02em;margin-bottom:2px">Landing Page</div>
-        <div class="pricing-period">Starting price available upon inquiry</div>
-        <p class="pricing-desc">For new businesses or focused offers that need a clean, professional starting point online.</p>
+        <div class="pricing-tier">01</div>
+        <div class="pricing-price">$750<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
+        <div class="pricing-period">Landing Page</div>
+        <p class="pricing-desc">One-page website for businesses that need a clean online presence and a clear call to action.</p>
         <ul class="pricing-items">
-          <li>One-page website</li>
-          <li>Mobile responsive layout</li>
-          <li>Basic brand styling applied</li>
-          <li>Contact section</li>
+          <li>Single-page layout</li>
+          <li>Mobile responsive</li>
+          <li>Contact / inquiry section</li>
+          <li>Basic brand styling</li>
           <li>Clear call-to-action</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Request pricing →</a>
+        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <div class="pricing-affirm-note">Affirm options available</div>
       </div>
-      <div class="pricing-card featured">
-        <div class="pricing-tier">Full Build</div>
-        <div class="pricing-price" style="font-size:32px;letter-spacing:-0.02em;margin-bottom:2px">Website Build</div>
-        <div class="pricing-period">Priced by scope</div>
-        <p class="pricing-desc">For businesses that need a stronger online presence with a complete, professional site that represents the brand properly.</p>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">02</div>
+        <div class="pricing-price">$2,500<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
+        <div class="pricing-period">Full Website</div>
+        <p class="pricing-desc">Multi-page or full-section website for businesses that need service pages, contact flow, and a stronger online presence.</p>
         <ul class="pricing-items">
-          <li>Multi-section or multi-page site</li>
-          <li>Services &amp; about sections</li>
+          <li>Multi-page or multi-section</li>
+          <li>Services &amp; about pages</li>
           <li>Contact or booking form</li>
           <li>Mobile responsive design</li>
           <li>Basic SEO structure</li>
-          <li>Launch-ready delivery</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Request pricing →</a>
+        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <div class="pricing-affirm-note">Affirm options available</div>
       </div>
+
       <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-price" style="font-size:32px;letter-spacing:-0.02em;margin-bottom:2px">Creative Build</div>
-        <div class="pricing-period">Custom quote based on scope</div>
-        <p class="pricing-desc">For profitable small businesses that need a complete brand and web system built together from the ground up.</p>
+        <div class="pricing-tier">03</div>
+        <div class="pricing-price">$750<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
+        <div class="pricing-period">Brand Kit</div>
+        <p class="pricing-desc">Logo direction, color palette, typography direction, and a simple visual system to help the business look consistent.</p>
         <ul class="pricing-items">
-          <li>Full website + landing pages</li>
+          <li>Logo direction</li>
+          <li>Color palette</li>
+          <li>Typography system</li>
+          <li>Basic visual guidelines</li>
+        </ul>
+        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <div class="pricing-affirm-note">Affirm options available</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">04</div>
+        <div class="pricing-price">$300<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
+        <div class="pricing-period">Flyer / Card Bundle</div>
+        <p class="pricing-desc">Business card and flyer design bundle for businesses that need physical and promotional materials that look professional.</p>
+        <ul class="pricing-items">
+          <li>Business card design</li>
+          <li>Flyer design (1 side)</li>
+          <li>Print-ready files</li>
+          <li>2 revision rounds</li>
+        </ul>
+        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <div class="pricing-affirm-note">Ask about Affirm</div>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-tier">05</div>
+        <div class="pricing-price">$2,500<span style="font-size:16px;font-weight:500;letter-spacing:0;color:rgba(255,255,255,0.5)"> min</span></div>
+        <div class="pricing-period">Business Presence Kit</div>
+        <p class="pricing-desc">Website, brand direction, and promotional assets combined into one launch-ready business presence built to work together.</p>
+        <ul class="pricing-items">
+          <li>Landing page or website</li>
+          <li>Brand direction</li>
+          <li>Business card design</li>
+          <li>Flyer or social graphics</li>
+          <li>Coordinated visual system</li>
+        </ul>
+        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <div class="pricing-affirm-note" style="color:rgba(255,255,255,0.45)">Affirm options available</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">06</div>
+        <div class="pricing-price">$5,000<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
+        <div class="pricing-period">Enterprise Build</div>
+        <p class="pricing-desc">Custom creative system for profitable small businesses that need website strategy, branding, landing pages, promotional content, and launch support.</p>
+        <ul class="pricing-items">
+          <li>Website strategy + full design</li>
+          <li>Landing pages</li>
           <li>Brand identity refinement</li>
-          <li>Promotional assets</li>
-          <li>Business cards &amp; flyers</li>
-          <li>Social media graphics</li>
-          <li>Launch-ready content direction</li>
+          <li>Promo content + social graphics</li>
+          <li>Business cards + flyers</li>
+          <li>Launch support</li>
         </ul>
         <a href="#contact-section" class="pricing-btn">Get enterprise quote →</a>
+        <div class="pricing-affirm-note">Affirm payment plans available</div>
       </div>
-    </div>
-  </section>
 
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:28px;max-width:600px;margin-left:auto;margin-right:auto">Pricing may increase depending on page count, content needs, functionality, branding, and promotional assets. All final scope and pricing is confirmed before work begins.</p>
+  </section>
   <!-- CLIENT EXPERIENCE -->
   <section class="cx-section">
     <div class="cx-inner">
@@ -1324,14 +1613,13 @@ const IMGS = {
               <label class="form-label">Service Needed *</label>
               <select class="form-select" name="service" required>
                 <option value="" disabled selected>Select a service...</option>
-                <option value="Landing Page">Landing Page</option>
-                <option value="Full Website">Full Website</option>
-                <option value="Enterprise Creative Build">Enterprise Creative Build</option>
-                <option value="Brand Identity">Brand Identity</option>
+                <option value="Landing Page ($750 min)">Landing Page — Starting at $750</option>
+                <option value="Full Website ($2,500 min)">Full Website — Starting at $2,500</option>
+                <option value="Brand Kit ($750 min)">Brand Kit — Starting at $750</option>
+                <option value="Flyer / Card Bundle ($300 min)">Flyer / Card Bundle — Starting at $300</option>
+                <option value="Business Presence Kit ($2,500 min)">Business Presence Kit — Starting at $2,500</option>
+                <option value="Enterprise Build ($5,000 min)">Enterprise Build — Starting at $5,000</option>
                 <option value="Promotional Content">Promotional Content</option>
-                <option value="Business Cards">Business Cards</option>
-                <option value="Flyers">Flyers</option>
-                <option value="Social Media Graphics">Social Media Graphics</option>
                 <option value="General Inquiry">General Inquiry</option>
               </select>
             </div>
@@ -1361,6 +1649,17 @@ const IMGS = {
               </div>
             </div>
             <div class="form-group">
+              <label class="form-label">Payment Preference</label>
+              <select class="form-select" name="payment_preference">
+                <option value="" disabled selected>How would you like to pay?</option>
+                <option value="Pay upfront">Pay upfront</option>
+                <option value="Deposit + final payment">Deposit + final payment</option>
+                <option value="Interested in Affirm">Interested in Affirm payment plan</option>
+                <option value="Need to discuss payment options">Need to discuss payment options</option>
+              </select>
+              <div style="font-size:11px;color:var(--gray-400);margin-top:5px">Affirm payment options may be available for eligible projects. Approval and terms are handled by Affirm.</div>
+            </div>
+            <div class="form-group">
               <label class="form-label">Project Details</label>
               <textarea class="form-textarea" name="message" placeholder="Tell us about your business, what you need, and anything we should know about the project..."></textarea>
             </div>
@@ -1384,24 +1683,237 @@ const IMGS = {
     </div>
   </section>
 
+  <!-- TRANSPARENCY -->
+  <section id="transparency-section" class="transparency-section">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:56px">
+        <div class="section-label">Transparency</div>
+        <h2 class="section-h2">What you are paying for.<br>What to expect.</h2>
+        <p class="section-sub" style="margin:0 auto">We operate on honesty. Here is exactly how we work, what each project includes, and what happens at every step of the process — before you spend a dollar.</p>
+      </div>
+      <div class="transparency-grid">
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg></div>
+            Payment Structure
+          </div>
+          <ul class="transparency-list">
+            <li><strong>Small projects (under $750):</strong> 100% upfront may be required.</li>
+            <li><strong>Websites &amp; branding:</strong> 50% deposit to start. 50% before launch or final file delivery.</li>
+            <li><strong>Enterprise builds:</strong> 40% deposit → 30% at midpoint → 30% before final delivery.</li>
+            <li>Final files, launch, and handoff are not released until final payment is complete.</li>
+            <li>Affirm payment options may be available for eligible projects. Approval and terms are handled by Affirm — not We Design Studio.</li>
+          </ul>
+        </div>
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></div>
+            Revisions
+          </div>
+          <ul class="transparency-list">
+            <li>Every project includes a defined number of revision rounds based on the package.</li>
+            <li>Revision rounds are agreed in writing before work begins.</li>
+            <li>Revisions outside the agreed scope may be charged separately.</li>
+            <li>Revisions must be submitted clearly and at one time per round — not piece by piece over multiple messages.</li>
+          </ul>
+        </div>
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            Timelines
+          </div>
+          <ul class="transparency-list">
+            <li>Timelines are estimated during the intake and scoping phase.</li>
+            <li>Timelines may vary based on client response time, revision requests, and project complexity.</li>
+            <li>Client delays in feedback, approvals, or content delivery will affect the project timeline.</li>
+            <li>We Design Studio will communicate any delays or changes in advance.</li>
+          </ul>
+        </div>
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg></div>
+            Client Responsibilities
+          </div>
+          <ul class="transparency-list">
+            <li>Provide all required content, images, and text in a timely manner.</li>
+            <li>Respond to feedback requests and approvals within a reasonable timeframe.</li>
+            <li>Communicate changes, concerns, or direction shifts as early as possible.</li>
+            <li>Ensure any brand materials, business info, or references shared are accurate.</li>
+          </ul>
+        </div>
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+            What We Design Is Responsible For
+          </div>
+          <ul class="transparency-list">
+            <li>Delivering the agreed scope on time and to a professional standard.</li>
+            <li>Communicating progress, questions, and any scope changes.</li>
+            <li>Providing organized, production-ready final files upon completion.</li>
+            <li>Holding client files securely during the project.</li>
+            <li>Not releasing final work until payment is complete.</li>
+          </ul>
+        </div>
+        <div class="transparency-card">
+          <div class="transparency-card-title">
+            <div class="transparency-card-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg></div>
+            Final Delivery
+          </div>
+          <ul class="transparency-list">
+            <li>Final files are delivered only after all payments are complete.</li>
+            <li>Website launch, domain connection, or live deployment happens after final payment.</li>
+            <li>All deliverables are handed off in organized, labeled formats.</li>
+            <li>Post-delivery support requests may be scoped as a separate project or retainer.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="affirm-note-box">
+        <strong>Affirm Payment Options:</strong> We Design Studio may offer Affirm payment options for eligible projects. Affirm approval, payment terms, and financing decisions are handled by Affirm. Project timelines, deposits, and final delivery requirements may still apply depending on the selected service and project scope. We Design Studio does not control or guarantee Affirm approval.
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGNER SECTION -->
+  <section id="designer-section" class="designer-section">
+    <div class="designer-inner">
+      <div>
+        <div class="section-label">Work With Us</div>
+        <h2 class="section-h2">Design<br>With Us.</h2>
+        <p class="section-sub">We Design Studio works with talented designers who want to take on client work without building a business from scratch. You handle the craft. We handle the clients.</p>
+
+        <div class="designer-steps" style="margin-top:32px">
+          <div class="designer-step"><div class="dstep-num">1</div>Fill out the designer application form with your skills, experience, and portfolio link.</div>
+          <div class="designer-step"><div class="dstep-num">2</div>We review your application and respond within 3–5 business days.</div>
+          <div class="designer-step"><div class="dstep-num">3</div>If it's a fit, we send a contractor agreement for both parties to sign before any paid work begins.</div>
+          <div class="designer-step"><div class="dstep-num">4</div>We assign projects based on your skills, availability, and team assignment (Red, Teal, or Grey team).</div>
+          <div class="designer-step"><div class="dstep-num">5</div>You complete assigned deliverables. After client payment and work approval, your payout is processed.</div>
+        </div>
+
+        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin-top:40px;margin-bottom:4px">Designer Payout Structure</h3>
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:0">Payouts are based on project type, scope, designer role, and deliverables assigned.</p>
+        <table class="payout-table">
+          <thead><tr><th>Level</th><th>Designer Gets</th><th>We Design Keeps</th></tr></thead>
+          <tbody>
+            <tr><td>Junior Designer</td><td class="payout-highlight">40%</td><td>60%</td></tr>
+            <tr><td>Mid-Level Designer</td><td class="payout-highlight">45–50%</td><td>50–55%</td></tr>
+            <tr><td>Senior Designer</td><td class="payout-highlight">55–60%</td><td>40–45%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--gray-400);margin-top:12px;line-height:1.6">Designer payouts are triggered after: client payment received → deliverable completed → work reviewed → work approved → milestone or final handoff satisfied. A flat project rate may be agreed on select projects.</p>
+      </div>
+
+      <div class="designer-form-wrap">
+        <div class="section-label" style="margin-bottom:8px">Apply to Design With Us</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.02em">Designer Application</h3>
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:24px;line-height:1.55">Submit your details and portfolio. We'll review and reach out if it's a fit. No paid work begins until both parties sign a contractor agreement.</p>
+        <!-- INTEGRATION NOTE: Route to Hello@wedesignsstudio.com via Web3Forms/EmailJS.
+             Contract automation can later be connected via DocuSign, Dropbox Sign, or PandaDoc. -->
+        <form id="designer-form" onsubmit="handleDesignerSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input class="form-input" type="text" name="d_name" placeholder="Your name" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input class="form-input" type="email" name="d_email" placeholder="you@email.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" name="d_phone" placeholder="(555) 000-0000"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Portfolio Link *</label>
+              <input class="form-input" type="url" name="d_portfolio" placeholder="https://yourportfolio.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Skill Level *</label>
+              <select class="form-select" name="d_level" required>
+                <option value="" disabled selected>Select level...</option>
+                <option value="Junior">Junior Designer</option>
+                <option value="Mid-Level">Mid-Level Designer</option>
+                <option value="Senior">Senior Designer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payout Preference</label>
+              <select class="form-select" name="d_payout">
+                <option value="" disabled selected>Select...</option>
+                <option value="Project split">Project split (% based)</option>
+                <option value="Flat rate">Flat rate per project</option>
+                <option value="Either">Either works</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Design Services Offered *</label>
+            <select class="form-select" name="d_services" required>
+              <option value="" disabled selected>Primary skill area...</option>
+              <option value="Web Design">Web Design</option>
+              <option value="Brand Identity">Brand Identity</option>
+              <option value="Flyer & Print Design">Flyer &amp; Print Design</option>
+              <option value="Social Media Graphics">Social Media Graphics</option>
+              <option value="Multiple">Multiple services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Software Experience</label>
+            <input class="form-input" type="text" name="d_software" placeholder="Figma, Adobe Suite, Canva Pro, etc."/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Availability</label>
+            <select class="form-select" name="d_availability">
+              <option value="" disabled selected>Select...</option>
+              <option value="Part-time (1–2 projects/month)">Part-time (1–2 projects/month)</option>
+              <option value="Part-time (3–5 projects/month)">Part-time (3–5 projects/month)</option>
+              <option value="Full availability">Full availability</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" name="d_message" placeholder="Tell us about your experience, what kind of work you enjoy, and why you want to work with We Design Studio..." style="min-height:90px"></textarea>
+          </div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px;padding:10px 14px;background:var(--gray-50);border-radius:8px;line-height:1.55">
+            By submitting this form you agree to receive a contractor agreement for review. No paid work begins until both parties sign. Contract automation powered by DocuSign or equivalent signing service — integration to be connected before launch.
+          </div>
+          <button type="submit" class="form-submit" id="designer-submit-btn">
+            Apply to Design With Us
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+        </form>
+        <div id="designer-success" style="display:none;text-align:center;padding:32px 20px">
+          <svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 12px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px">Application submitted.</h3>
+          <p style="font-size:14px;color:var(--gray-500)">We'll review your application and reach out within 3–5 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
-    <h2 class="cta-h2">Ready to build something<br><span class="grad-text">serious?</span></h2>
-    <p class="cta-sub">We Design Studio — websites, branding, and content systems for small businesses ready to grow.</p>
-    <a href="#contact-section" class="btn-primary" style="margin:0 auto">
-      Book a Creative Build →
-    </a>
+    <h2 class="cta-h2">Human Crafted.<br><span class="grad-text">Brand Better.</span></h2>
+    <p class="cta-sub">Websites, branding, and visual systems for businesses at every stage. Starting from zero or upgrading something active — we make it look right.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#contact-section" class="btn-primary">Start a Project →</a>
+      <a href="#pricing-section" class="btn-secondary">View Pricing</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-copy">© 2026 We Design Studio · <a href="mailto:Hello@wedesignsstudio.com" style="color:inherit">Hello@wedesignsstudio.com</a></div>
+    <div class="footer-copy">© 2026 We Design Studio · <a href="mailto:Hello@wedesignsstudio.com" style="color:inherit">Hello@wedesignsstudio.com</a> · Orlando, FL</div>
     <div class="footer-links">
       <a href="#services-section">Services</a>
       <a href="#pricing-section">Pricing</a>
-      <a href="#enterprise-section">Enterprise</a>
+      <a href="#transparency-section">Transparency</a>
+      <a href="#designer-section">Design With Us</a>
       <a href="#contact-section">Contact</a>
-      <a href="mailto:Hello@wedesignsstudio.com">Email Us</a>
+      <a href="javascript:void(0)" onclick="showPage('admin')" style="color:var(--gray-300)">Admin</a>
     </div>
   </footer>
 </div>
@@ -1765,6 +2277,181 @@ const IMGS = {
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT LOGIN MODAL -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div class="modal-title">Client Login</div>
+    <div class="modal-sub">Enter the email address associated with your project to access your dashboard.</div>
+    <input class="modal-input" type="email" id="modal-email-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doModalLogin()"/>
+    <button class="modal-btn" onclick="doModalLogin()">Access My Dashboard</button>
+    <div class="modal-note">Not a client yet? <a href="#contact-section" onclick="closeLoginModal()" style="color:var(--ink);font-weight:600">Start a project →</a></div>
+  </div>
+</div>
+
+<!-- ADMIN PORTAL PAGE -->
+<div id="page-admin" class="page" data-login-root="admin-portal">
+  <!-- ADMIN LOGIN SCREEN -->
+  <div class="admin-login-screen" id="admin-login-screen">
+    <div class="admin-login-box">
+      <img id="admin-logo" src="assets/logo.svg" style="width:40px;height:40px;object-fit:contain;margin:0 auto 16px"/>
+      <h2>Admin Portal</h2>
+      <p>CEO / Creative Director login</p>
+      <input class="modal-input" type="email" id="admin-email-input" placeholder="Hello@wedesignsstudio.com" style="margin-bottom:10px"/>
+      <input class="modal-input" type="password" id="admin-pass-input" placeholder="Password" style="margin-bottom:12px"/>
+      <button class="modal-btn" onclick="adminLogin()">Sign In</button>
+      <!-- REPLACE THIS MOCK LOGIN WITH REAL AUTHENTICATION BEFORE LAUNCH -->
+      <div class="admin-login-mock-note">Prototype mode — mock login active. Replace with real auth before production.</div>
+      <button style="margin-top:16px;font-size:12px;color:var(--gray-400);background:none;border:none;cursor:pointer" onclick="showPage('landing')">← Back to site</button>
+    </div>
+  </div>
+  <!-- ADMIN DASHBOARD -->
+  <div class="admin-layout" id="admin-dashboard" style="display:none">
+    <aside class="admin-sidebar">
+      <div class="admin-logo"><img src="assets/logo.svg" style="width:22px;height:22px;object-fit:contain"/>We Design</div>
+      <div class="admin-role-badge">CEO / Creative Director</div>
+      <div class="admin-nav-link active" onclick="showAdminPanel('overview',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+        Overview
+      </div>
+      <div class="admin-nav-link" onclick="showAdminPanel('inquiries',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        Client Inquiries
+      </div>
+      <div class="admin-nav-link" onclick="showAdminPanel('designers',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Designer Applications
+      </div>
+      <div class="admin-nav-link" onclick="showAdminPanel('team',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+        Team Management
+      </div>
+      <div class="admin-nav-link" onclick="showAdminPanel('pricing',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"/></svg>
+        Pricing Overview
+      </div>
+      <div style="margin-top:auto;padding-top:16px;border-top:1px solid var(--gray-100)">
+        <div class="admin-nav-link" onclick="showPage('landing')">← Back to Site</div>
+      </div>
+    </aside>
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>CEO / Creative Director Dashboard</h1>
+        <div style="font-size:12px;color:var(--gray-400)">Logged in as <strong>Hello@wedesignsstudio.com</strong></div>
+      </div>
+      <div class="admin-panels">
+
+        <!-- OVERVIEW -->
+        <div id="admin-panel-overview" class="admin-active">
+          <div class="admin-stats" id="admin-stats-row">
+            <div class="admin-stat"><div class="admin-stat-val" id="stat-inquiries">0</div><div class="admin-stat-label">Client Inquiries</div></div>
+            <div class="admin-stat"><div class="admin-stat-val" id="stat-designers">0</div><div class="admin-stat-label">Designer Applications</div></div>
+            <div class="admin-stat"><div class="admin-stat-val" id="stat-team">0</div><div class="admin-stat-label">Team Members</div></div>
+            <div class="admin-stat"><div class="admin-stat-val" id="stat-affirm">0</div><div class="admin-stat-label">Affirm Interest</div></div>
+          </div>
+          <div class="dash-card" style="margin-bottom:20px">
+            <div class="dash-card-header"><div class="dash-card-title">Package Pricing Overview</div></div>
+            <table class="admin-table">
+              <thead><tr><th>Package</th><th>Minimum</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Landing Page</td><td>$750</td><td>Starting price — scope may increase</td></tr>
+                <tr><td>Full Website</td><td>$2,500</td><td>Multi-page, mobile-first</td></tr>
+                <tr><td>Brand Kit</td><td>$750</td><td>Logo, colors, typography</td></tr>
+                <tr><td>Flyer / Card Bundle</td><td>$300</td><td>Print-ready files included</td></tr>
+                <tr><td>Business Presence Kit</td><td>$2,500</td><td>Website + brand + promo</td></tr>
+                <tr><td>Enterprise Build</td><td>$5,000</td><td>Custom scope-based quote</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size:12px;color:var(--gray-400);padding:12px;background:#f9fafb;border-radius:8px;border:1px dashed #e5e7eb">
+            Admin portal is a localStorage prototype. Connect a real backend (Supabase, Firebase, or custom API) before production launch. See code comments for integration points.
+          </div>
+        </div>
+
+        <!-- INQUIRIES -->
+        <div id="admin-panel-inquiries">
+          <div class="admin-section-title">Client Inquiries</div>
+          <div id="admin-inquiries-empty" style="font-size:14px;color:var(--gray-400);padding:24px 0">No inquiries yet. Inquiries submitted through the contact form will appear here.</div>
+          <table class="admin-table" id="admin-inquiries-table" style="display:none">
+            <thead><tr><th>Name</th><th>Business</th><th>Service</th><th>Budget</th><th>Payment Pref.</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody id="admin-inquiries-body"></tbody>
+          </table>
+        </div>
+
+        <!-- DESIGNER APPLICATIONS -->
+        <div id="admin-panel-designers">
+          <div class="admin-section-title">Designer Applications</div>
+          <!-- HIRE DESIGNERS -->
+          <div id="admin-designers-empty" style="font-size:14px;color:var(--gray-400);padding:24px 0">No applications yet. Designer applications will appear here for review.</div>
+          <table class="admin-table" id="admin-designers-table" style="display:none">
+            <thead><tr><th>Name</th><th>Level</th><th>Services</th><th>Portfolio</th><th>Status</th><th>Contract</th><th>Team</th><th>Actions</th></tr></thead>
+            <tbody id="admin-designers-body"></tbody>
+          </table>
+        </div>
+
+        <!-- TEAM MANAGEMENT -->
+        <div id="admin-panel-team">
+          <div class="admin-section-title">Team Management</div>
+          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:24px;margin-bottom:20px">
+            <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:16px">Add Team Member</div>
+            <div class="admin-form-row">
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Name</label><input class="admin-input" id="tm-name" placeholder="Full name"/></div>
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Email</label><input class="admin-input" id="tm-email" placeholder="designer@email.com"/></div>
+            </div>
+            <div class="admin-form-row">
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Role</label><input class="admin-input" id="tm-role" placeholder="Web Designer, Brand Designer..."/></div>
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Level</label>
+                <select class="admin-select" id="tm-level">
+                  <option value="Junior">Junior</option>
+                  <option value="Mid">Mid-Level</option>
+                  <option value="Senior">Senior</option>
+                </select>
+              </div>
+            </div>
+            <div class="admin-form-row">
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Team</label>
+                <select class="admin-select" id="tm-team">
+                  <option value="Red">Red Team</option>
+                  <option value="Teal">Teal Team</option>
+                  <option value="Grey">Grey Team</option>
+                </select>
+              </div>
+              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Specialty</label><input class="admin-input" id="tm-specialty" placeholder="Web design, Brand identity..."/></div>
+            </div>
+            <button class="admin-btn" onclick="adminAddTeamMember()">Add Member</button>
+          </div>
+          <table class="admin-table" id="admin-team-table">
+            <thead><tr><th>Name</th><th>Role</th><th>Level</th><th>Team</th><th>Specialty</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="admin-team-body"><tr><td colspan="7" style="text-align:center;color:var(--gray-400);padding:24px;font-size:13px">No team members yet. Add one above.</td></tr></tbody>
+          </table>
+          <!-- localStorage prototype note -->
+          <!-- BACKEND INTEGRATION: Replace localStorage with real database (Supabase, Firebase, etc.) -->
+        </div>
+
+        <!-- PRICING OVERVIEW -->
+        <div id="admin-panel-pricing">
+          <div class="admin-section-title">Pricing &amp; Affirm Overview</div>
+          <table class="admin-table">
+            <thead><tr><th>Package</th><th>Starting Price</th><th>Payment Structure</th><th>Affirm Available</th></tr></thead>
+            <tbody>
+              <tr><td>Landing Page</td><td>$750 min</td><td>100% upfront or 50/50</td><td><span class="affirm-badge">Yes</span></td></tr>
+              <tr><td>Full Website</td><td>$2,500 min</td><td>50% deposit / 50% before launch</td><td><span class="affirm-badge">Yes</span></td></tr>
+              <tr><td>Brand Kit</td><td>$750 min</td><td>100% upfront or 50/50</td><td><span class="affirm-badge">Yes</span></td></tr>
+              <tr><td>Flyer / Card Bundle</td><td>$300 min</td><td>100% upfront</td><td><span class="affirm-badge">Ask</span></td></tr>
+              <tr><td>Business Presence Kit</td><td>$2,500 min</td><td>50% deposit / 50% before launch</td><td><span class="affirm-badge">Yes</span></td></tr>
+              <tr><td>Enterprise Build</td><td>$5,000 min</td><td>40% / 30% / 30% milestones</td><td><span class="affirm-badge">Yes</span></td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:16px;font-size:13px;color:var(--gray-400);line-height:1.6;padding:14px;background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px">
+            Affirm integration note: Payment plan language is live on the site. To activate real Affirm checkout, integrate the official Affirm.js SDK with your merchant credentials. Do not guarantee approval or monthly amounts without official integration.
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
@@ -2208,6 +2895,287 @@ async function sendHubMessage() {
 }
 
 window.loadDashboard = loadDashboard;
+
+// ══════════════════════════════════════════════
+// CLIENT LOGIN MODAL
+// ══════════════════════════════════════════════
+function openLoginModal() {
+  document.getElementById('login-modal').classList.add('open');
+  setTimeout(() => { const el = document.getElementById('modal-email-input'); if(el) el.focus(); }, 100);
+}
+function closeLoginModal() {
+  document.getElementById('login-modal').classList.remove('open');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('login-modal');
+  if (overlay) overlay.addEventListener('click', e => { if(e.target === overlay) closeLoginModal(); });
+});
+async function doModalLogin() {
+  const emailInput = document.getElementById('modal-email-input');
+  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  if (!email) { alert('Enter your email first.'); return; }
+  closeLoginModal();
+  // Reuse existing handleLogin logic by setting the email field
+  window.CLIENT_EMAIL = email;
+  try {
+    const response = await fetch(`${API_URL}?action=getDashboard&email=${encodeURIComponent(email)}`);
+    if (!response.ok) throw new Error('Request failed');
+    let data = await response.json();
+    if (data.error && String(data.error).toLowerCase().includes('invalid action')) {
+      const fb = await fetch(`${API_URL}?action=getProject&email=${encodeURIComponent(email)}`);
+      const fbData = await fb.json();
+      if (fbData.error) { alert("We couldn't find that email. Please contact Hello@wedesignsstudio.com"); return; }
+      data = { role: 'client', project: fbData, messages: [], files: [] };
+    } else if (data.error) { alert(data.error || 'Access Denied.'); return; }
+    if (data.role === 'designer') { renderDesignerDashboard(Array.isArray(data.projects) ? data.projects : []); }
+    else if (data.role === 'client' || data.project) { renderClientDashboard(data); }
+    else { alert('Access Denied.'); }
+  } catch(err) { alert('Login failed. Please contact Hello@wedesignsstudio.com'); }
+}
+
+// ══════════════════════════════════════════════
+// ADMIN PORTAL
+// ══════════════════════════════════════════════
+// MOCK LOGIN — Replace with real auth before production
+const ADMIN_EMAIL = 'hello@wedesignsstudio.com';
+const ADMIN_PASS_MOCK = 'wedesign2026'; // CHANGE THIS — mock only, replace with backend auth
+
+function adminLogin() {
+  const email = (document.getElementById('admin-email-input').value || '').trim().toLowerCase();
+  const pass = document.getElementById('admin-pass-input').value || '';
+  if (email === ADMIN_EMAIL && pass === ADMIN_PASS_MOCK) {
+    document.getElementById('admin-login-screen').style.display = 'none';
+    document.getElementById('admin-dashboard').style.display = 'flex';
+    adminLoadAll();
+  } else {
+    alert('Incorrect credentials. (Prototype mode: use Hello@wedesignsstudio.com / wedesign2026)');
+  }
+}
+
+function showAdminPanel(id, el) {
+  document.querySelectorAll('.admin-panels > div').forEach(p => p.classList.remove('admin-active'));
+  const target = document.getElementById('admin-panel-' + id);
+  if (target) target.classList.add('admin-active');
+  document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+function adminLoadAll() {
+  adminLoadInquiries();
+  adminLoadDesigners();
+  adminLoadTeam();
+  adminUpdateStats();
+}
+
+// ── INQUIRIES (localStorage) ──
+// BACKEND INTEGRATION: Replace localStorage reads with API calls to your backend
+function adminLoadInquiries() {
+  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  const tbody = document.getElementById('admin-inquiries-body');
+  const table = document.getElementById('admin-inquiries-table');
+  const empty = document.getElementById('admin-inquiries-empty');
+  if (!data.length) { if(empty) empty.style.display='block'; if(table) table.style.display='none'; return; }
+  if(empty) empty.style.display='none'; if(table) table.style.display='table';
+  tbody.innerHTML = data.map((r, i) => {
+    const affirm = r.payment_preference && r.payment_preference.toLowerCase().includes('affirm');
+    return `<tr>
+      <td>${r.name||'—'}</td>
+      <td>${r.business_name||'—'}</td>
+      <td>${r.service||'—'}</td>
+      <td>${r.budget||'—'}</td>
+      <td>${affirm ? `<span class="affirm-badge">Affirm Interest</span>` : (r.payment_preference||'—')}</td>
+      <td style="font-size:11px;color:var(--gray-400)">${r.date||'—'}</td>
+      <td><button class="admin-action-btn danger" onclick="adminDeleteInquiry(${i})">Remove</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function adminDeleteInquiry(i) {
+  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  data.splice(i, 1);
+  localStorage.setItem('wd_inquiries', JSON.stringify(data));
+  adminLoadInquiries(); adminUpdateStats();
+}
+
+// ── DESIGNER APPLICATIONS (localStorage) ──
+// BACKEND INTEGRATION: Replace localStorage with real DB calls
+function adminLoadDesigners() {
+  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+  const tbody = document.getElementById('admin-designers-body');
+  const table = document.getElementById('admin-designers-table');
+  const empty = document.getElementById('admin-designers-empty');
+  if (!data.length) { if(empty) empty.style.display='block'; if(table) table.style.display='none'; return; }
+  if(empty) empty.style.display='none'; if(table) table.style.display='table';
+  tbody.innerHTML = data.map((r, i) => {
+    const statusOpts = ['Pending','Approved','Rejected'].map(s => `<option${r.status===s?' selected':''}>${s}</option>`).join('');
+    const contractOpts = ['Not Sent','Sent','Signed'].map(s => `<option${r.contract===s?' selected':''}>${s}</option>`).join('');
+    const teamOpts = ['—','Red','Teal','Grey'].map(s => `<option${r.team===s?' selected':''}>${s}</option>`).join('');
+    return `<tr>
+      <td>${r.name||'—'}<div style="font-size:11px;color:var(--gray-400)">${r.email||''}</div></td>
+      <td>${r.level||'—'}</td>
+      <td>${r.services||'—'}</td>
+      <td><a href="${r.portfolio||'#'}" target="_blank" style="color:var(--ink);font-size:12px">${r.portfolio ? 'View →' : '—'}</a></td>
+      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'status',this.value)">${statusOpts}</select></td>
+      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'contract',this.value)">${contractOpts}</select></td>
+      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'team',this.value)">${teamOpts}</select></td>
+      <td><button class="admin-action-btn danger" onclick="adminDeleteDesigner(${i})">Remove</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function adminUpdateDesigner(i, field, val) {
+  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+  if (data[i]) { data[i][field] = val; localStorage.setItem('wd_designer_apps', JSON.stringify(data)); }
+  // If approved + assigned to team, optionally add to team members
+}
+function adminDeleteDesigner(i) {
+  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+  data.splice(i, 1);
+  localStorage.setItem('wd_designer_apps', JSON.stringify(data));
+  adminLoadDesigners(); adminUpdateStats();
+}
+
+// ── TEAM MANAGEMENT (localStorage) ──
+// BACKEND INTEGRATION: Replace localStorage with real DB calls
+function adminAddTeamMember() {
+  const name = document.getElementById('tm-name').value.trim();
+  const email = document.getElementById('tm-email').value.trim();
+  const role = document.getElementById('tm-role').value.trim();
+  const level = document.getElementById('tm-level').value;
+  const team = document.getElementById('tm-team').value;
+  const specialty = document.getElementById('tm-specialty').value.trim();
+  if (!name || !email) { alert('Name and email are required.'); return; }
+  const members = JSON.parse(localStorage.getItem('wd_team') || '[]');
+  members.push({ name, email, role, level, team, specialty, status: 'Active', date: new Date().toLocaleDateString() });
+  localStorage.setItem('wd_team', JSON.stringify(members));
+  ['tm-name','tm-email','tm-role','tm-specialty'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+  adminLoadTeam(); adminUpdateStats();
+}
+
+function adminLoadTeam() {
+  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
+  const tbody = document.getElementById('admin-team-body');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--gray-400);padding:24px;font-size:13px">No team members yet. Add one above.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map((m, i) => {
+    const statusOpts = ['Active','Pending','Inactive'].map(s => `<option${m.status===s?' selected':''}>${s}</option>`).join('');
+    const teamClass = m.team === 'Red' ? 'team-red' : m.team === 'Teal' ? 'team-teal' : 'team-grey';
+    const statusClass = m.status === 'Active' ? 'status-active' : m.status === 'Pending' ? 'status-pending' : 'status-inactive';
+    return `<tr>
+      <td>${m.name}<div style="font-size:11px;color:var(--gray-400)">${m.email}</div></td>
+      <td>${m.role||'—'}</td>
+      <td>${m.level||'—'}</td>
+      <td><span class="team-badge ${teamClass}">${m.team} Team</span></td>
+      <td style="font-size:12px">${m.specialty||'—'}</td>
+      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateTeamMember(${i},'status',this.value)">${statusOpts}</select></td>
+      <td><button class="admin-action-btn danger" onclick="adminRemoveTeamMember(${i})">Remove</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function adminUpdateTeamMember(i, field, val) {
+  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
+  if (data[i]) { data[i][field] = val; localStorage.setItem('wd_team', JSON.stringify(data)); adminLoadTeam(); }
+}
+function adminRemoveTeamMember(i) {
+  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
+  data.splice(i, 1);
+  localStorage.setItem('wd_team', JSON.stringify(data));
+  adminLoadTeam(); adminUpdateStats();
+}
+
+function adminUpdateStats() {
+  const inquiries = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  const designers = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+  const team = JSON.parse(localStorage.getItem('wd_team') || '[]');
+  const affirmCount = inquiries.filter(r => r.payment_preference && r.payment_preference.toLowerCase().includes('affirm')).length;
+  const setStat = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  setStat('stat-inquiries', inquiries.length);
+  setStat('stat-designers', designers.length);
+  setStat('stat-team', team.length);
+  setStat('stat-affirm', affirmCount);
+}
+
+// ── CONTACT FORM: store in localStorage for admin preview ──
+// BACKEND INTEGRATION: Also submit to Web3Forms/EmailJS for actual email delivery
+const _origHandleContactSubmit = window.handleContactSubmit;
+async function handleContactSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  const fd = new FormData(form);
+  const entry = {
+    name: fd.get('name') || '', business_name: fd.get('business_name') || '',
+    email: fd.get('email') || '', phone: fd.get('phone') || '',
+    service: fd.get('service') || '', budget: fd.get('budget') || '',
+    timeline: fd.get('timeline') || '', payment_preference: fd.get('payment_preference') || '',
+    message: fd.get('message') || '',
+    date: new Date().toLocaleDateString()
+  };
+
+  // Store locally for admin portal preview
+  const existing = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  existing.unshift(entry);
+  localStorage.setItem('wd_inquiries', JSON.stringify(existing));
+
+  // BACKEND INTEGRATION: Submit to Web3Forms for email delivery
+  // Replace YOUR_ACCESS_KEY_HERE with key from web3forms.com
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+    const json = await res.json();
+    if (json.success) {
+      document.getElementById('contact-form-body').innerHTML = '';
+      const success = document.getElementById('contact-success');
+      if (success) success.style.display = 'block';
+    } else {
+      btn.disabled = false; btn.textContent = 'Send Inquiry';
+      alert('Saved locally. To activate email delivery, add a Web3Forms key. Or email Hello@wedesignsstudio.com directly.');
+    }
+  } catch {
+    // Even if email fails, local storage worked — show success
+    document.getElementById('contact-form-body').innerHTML = '';
+    const success = document.getElementById('contact-success');
+    if (success) success.style.display = 'block';
+  }
+}
+window.handleContactSubmit = handleContactSubmit;
+
+// ── DESIGNER APPLICATION FORM ──
+// BACKEND INTEGRATION: Add Web3Forms/EmailJS key + DocuSign/PandaDoc contract automation
+async function handleDesignerSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('designer-form');
+  const btn = document.getElementById('designer-submit-btn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+
+  const fd = new FormData(form);
+  const entry = {
+    name: fd.get('d_name') || '', email: fd.get('d_email') || '',
+    phone: fd.get('d_phone') || '', portfolio: fd.get('d_portfolio') || '',
+    level: fd.get('d_level') || '', payout: fd.get('d_payout') || '',
+    services: fd.get('d_services') || '', software: fd.get('d_software') || '',
+    availability: fd.get('d_availability') || '', message: fd.get('d_message') || '',
+    status: 'Pending', contract: 'Not Sent', team: '—',
+    date: new Date().toLocaleDateString()
+  };
+
+  const existing = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+  existing.unshift(entry);
+  localStorage.setItem('wd_designer_apps', JSON.stringify(existing));
+
+  form.style.display = 'none';
+  const success = document.getElementById('designer-success');
+  if (success) success.style.display = 'block';
+}
+
+// Admin page route
+function goToAdmin() { showPage('admin'); }
+
+
 window.handleLogin = handleLogin;
 window.sendMessage = sendMessage;
 window.sendHubMessage = sendHubMessage;
