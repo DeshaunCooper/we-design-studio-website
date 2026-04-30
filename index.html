@@ -2463,11 +2463,12 @@ const IMGS = {
 let lenis;
 document.addEventListener('DOMContentLoaded', () => {
   lenis = new Lenis({
-    duration: 1.2,
-    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-    smoothTouch: false,
-    touchMultiplier: 2
+    lerp: 0.08,               // weighted, slightly heavy — lower = more inertia
+    smoothWheel: true,
+    smoothTouch: false,       // keep native scroll on mobile
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+    infinite: false,
   });
 
   function raf(time) {
