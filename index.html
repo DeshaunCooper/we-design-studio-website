@@ -12,7 +12,8 @@
     /* ── RESET & BASE ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:auto}
-    body{font-family:'Inter',sans-serif;background:#fafafa;color:#111;-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter',sans-serif;background:#fafafa;color:#111;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    html{overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
 
@@ -417,9 +418,10 @@
     .pricing-btn{
       display:flex;align-items:center;justify-content:center;gap:6px;
       padding:13px 20px;border-radius:10px;
-      font-size:13px;font-weight:600;
+      font-size:13px;font-weight:600;font-family:inherit;
       border:1px solid var(--gray-200);color:var(--ink);
       background:#fff;cursor:pointer;transition:all .2s;
+      text-decoration:none;width:100%;
     }
     .pricing-btn:hover{background:var(--gray-100)}
     .pricing-card.featured .pricing-btn{
@@ -693,6 +695,7 @@
     /* ── RESPONSIVE ── */
     @media(max-width:1024px){
       .topnav{padding:0 24px}
+      .topnav-links{display:none}
       .hero{padding:60px 24px;flex-direction:column;gap:60px;min-height:auto}
       .hero-right{width:100%}
       section{padding:72px 24px}
@@ -876,6 +879,7 @@
       transition:all .15s;cursor:pointer;
     }
     .topnav-cta-ghost:hover{background:var(--gray-100)}
+    @media(max-width:640px){.topnav-cta-ghost{display:none}}
 
     /* ── CLIENT LOGIN MODAL ── */
     .modal-overlay{
@@ -1102,6 +1106,36 @@
     .file-icon{font-size:18px;line-height:1}
     .download-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:10px;border:1px solid var(--gray-200);font-size:13px;font-weight:600;background:#fff;white-space:nowrap}
 
+
+    /* ── PRICING PACKAGE NAME ── */
+    .pricing-package-name{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px}
+    .pricing-card.featured .pricing-package-name{color:rgba(255,255,255,0.5)}
+    .enterprise-price-hidden{font-size:36px !important;letter-spacing:0 !important;background:linear-gradient(135deg,#e040fb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ── ENTERPRISE MODAL ── */
+    .enterprise-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.25s ease}
+    .enterprise-modal-overlay.open{opacity:1;pointer-events:all}
+    .enterprise-modal{background:#fff;border-radius:20px;padding:48px 44px;max-width:580px;width:100%;position:relative;transform:translateY(20px);transition:transform 0.25s ease;box-shadow:0 24px 80px rgba(0,0,0,0.18)}
+    .enterprise-modal-overlay.open .enterprise-modal{transform:translateY(0)}
+    .enterprise-modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:#f3f4f6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6b7280;transition:background 0.15s}
+    .enterprise-modal-close:hover{background:#e5e7eb}
+    .enterprise-modal-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:12px}
+    .enterprise-modal-price{font-size:52px;font-weight:800;letter-spacing:-0.03em;color:#111;margin-bottom:4px}
+    .enterprise-modal-range{font-size:14px;color:#6b7280;margin-bottom:28px}
+    .enterprise-modal-features{list-style:none;padding:0;margin:0 0 28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+    .enterprise-modal-features li{font-size:14px;color:#374151;display:flex;align-items:center;gap:8px}
+    .enterprise-modal-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,#e040fb,#7c3aed);flex-shrink:0}
+    .enterprise-modal-affirm{font-size:13px;color:#6b7280;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 16px;margin-bottom:28px}
+    .enterprise-modal-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .enterprise-modal-btn-primary{flex:1;min-width:160px;background:#111;color:#fff;border:none;border-radius:10px;padding:14px 20px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.15s;text-align:center;text-decoration:none;display:inline-block}
+    .enterprise-modal-btn-primary:hover{background:#222}
+    .enterprise-modal-btn-secondary{flex:1;min-width:160px;background:transparent;color:#111;border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 20px;font-size:14px;font-weight:600;cursor:pointer;transition:border-color 0.15s;text-align:center;text-decoration:none;display:inline-block}
+    .enterprise-modal-btn-secondary:hover{border-color:#aaa}
+    @media(max-width:640px){
+      .enterprise-modal{padding:32px 24px}
+      .enterprise-modal-features{grid-template-columns:1fr}
+      .enterprise-modal-price{font-size:40px}
+    }
   </style>
 </head>
 <body>
@@ -1415,8 +1449,8 @@ const IMGS = {
 
       <div class="pricing-card">
         <div class="pricing-tier">01</div>
-        <div class="pricing-price">$750<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
-        <div class="pricing-period">Landing Page</div>
+        <div class="pricing-price">$750</div>
+        <div class="pricing-period">One-time fee · starting price</div><div class="pricing-package-name">Landing Page</div>
         <p class="pricing-desc">One-page website for businesses that need a clean online presence and a clear call to action.</p>
         <ul class="pricing-items">
           <li>Single-page layout</li>
@@ -1425,14 +1459,14 @@ const IMGS = {
           <li>Basic brand styling</li>
           <li>Clear call-to-action</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <button onclick="goToCheckout('landingPage')" class="pricing-btn">Get started →</button>
         <div class="pricing-affirm-note">Affirm options available</div>
       </div>
 
       <div class="pricing-card">
         <div class="pricing-tier">02</div>
-        <div class="pricing-price">$2,500<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
-        <div class="pricing-period">Full Website</div>
+        <div class="pricing-price">$2,500</div>
+        <div class="pricing-period">One-time fee · starting price</div><div class="pricing-package-name">Full Website</div>
         <p class="pricing-desc">Multi-page or full-section website for businesses that need service pages, contact flow, and a stronger online presence.</p>
         <ul class="pricing-items">
           <li>Multi-page or multi-section</li>
@@ -1441,14 +1475,14 @@ const IMGS = {
           <li>Mobile responsive design</li>
           <li>Basic SEO structure</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <button onclick="goToCheckout('fullWebsite')" class="pricing-btn">Get started →</button>
         <div class="pricing-affirm-note">Affirm options available</div>
       </div>
 
       <div class="pricing-card">
         <div class="pricing-tier">03</div>
-        <div class="pricing-price">$750<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
-        <div class="pricing-period">Brand Kit</div>
+        <div class="pricing-price">$750</div>
+        <div class="pricing-period">One-time fee · starting price</div><div class="pricing-package-name">Brand Kit</div>
         <p class="pricing-desc">Logo direction, color palette, typography direction, and a simple visual system to help the business look consistent.</p>
         <ul class="pricing-items">
           <li>Logo direction</li>
@@ -1456,14 +1490,14 @@ const IMGS = {
           <li>Typography system</li>
           <li>Basic visual guidelines</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <button onclick="goToCheckout('brandKit')" class="pricing-btn">Get started →</button>
         <div class="pricing-affirm-note">Affirm options available</div>
       </div>
 
       <div class="pricing-card">
         <div class="pricing-tier">04</div>
-        <div class="pricing-price">$300<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
-        <div class="pricing-period">Flyer / Card Bundle</div>
+        <div class="pricing-price">$300</div>
+        <div class="pricing-period">One-time fee · starting price</div><div class="pricing-package-name">Flyer / Card Bundle</div>
         <p class="pricing-desc">Business card and flyer design bundle for businesses that need physical and promotional materials that look professional.</p>
         <ul class="pricing-items">
           <li>Business card design</li>
@@ -1471,14 +1505,14 @@ const IMGS = {
           <li>Print-ready files</li>
           <li>2 revision rounds</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <button onclick="goToCheckout('flyerCardBundle')" class="pricing-btn">Get started →</button>
         <div class="pricing-affirm-note">Ask about Affirm</div>
       </div>
 
       <div class="pricing-card featured">
         <div class="pricing-tier">05</div>
-        <div class="pricing-price">$2,500<span style="font-size:16px;font-weight:500;letter-spacing:0;color:rgba(255,255,255,0.5)"> min</span></div>
-        <div class="pricing-period">Business Presence Kit</div>
+        <div class="pricing-price">$2,500</div>
+        <div class="pricing-period">One-time fee · starting price</div><div class="pricing-package-name">Business Presence Kit</div>
         <p class="pricing-desc">Website, brand direction, and promotional assets combined into one launch-ready business presence built to work together.</p>
         <ul class="pricing-items">
           <li>Landing page or website</li>
@@ -1487,14 +1521,15 @@ const IMGS = {
           <li>Flyer or social graphics</li>
           <li>Coordinated visual system</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get started →</a>
+        <button onclick="goToCheckout('businessPresenceKit')" class="pricing-btn">Get started →</button>
         <div class="pricing-affirm-note" style="color:rgba(255,255,255,0.45)">Affirm options available</div>
       </div>
 
       <div class="pricing-card">
         <div class="pricing-tier">06</div>
-        <div class="pricing-price">$5,000<span style="font-size:16px;font-weight:500;letter-spacing:0"> min</span></div>
-        <div class="pricing-period">Enterprise Build</div>
+        <div class="pricing-price enterprise-price-hidden">Scope-based</div>
+        <div class="pricing-period">One-time fee · project scope</div>
+        <div class="pricing-package-name">Enterprise Build</div>
         <p class="pricing-desc">Custom creative system for profitable small businesses that need website strategy, branding, landing pages, promotional content, and launch support.</p>
         <ul class="pricing-items">
           <li>Website strategy + full design</li>
@@ -1504,7 +1539,7 @@ const IMGS = {
           <li>Business cards + flyers</li>
           <li>Launch support</li>
         </ul>
-        <a href="#contact-section" class="pricing-btn">Get enterprise quote →</a>
+        <button onclick="openEnterpriseModal()" class="pricing-btn">Get Enterprise Quote →</button>
         <div class="pricing-affirm-note">Affirm payment plans available</div>
       </div>
 
@@ -1542,7 +1577,7 @@ const IMGS = {
 
   <!-- CONTACT FORM -->
   <!-- INTEGRATION NOTE: Form uses Web3Forms (https://web3forms.com). -->
-  <!-- Replace the access_key value with your Web3Forms key tied to Hello@wedesignsstudio.com -->
+  <!-- Replace the access_key value with your Web3Forms key tied to hello@wedesignsstudio.com -->
   <!-- Get your free key at: https://web3forms.com/#start -->
   <section id="contact-section" class="contact-section">
     <div class="contact-inner">
@@ -1557,7 +1592,7 @@ const IMGS = {
             </div>
             <div>
               <div class="contact-info-label">Email</div>
-              <div class="contact-info-val">Hello@wedesignsstudio.com</div>
+              <div class="contact-info-val">hello@wedesignsstudio.com</div>
             </div>
           </div>
           <div class="contact-info-item">
@@ -1668,7 +1703,7 @@ const IMGS = {
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </button>
             <div style="font-size:12px;color:#9ca3af;text-align:center;margin-top:12px">
-              Inquiries go directly to <strong>Hello@wedesignsstudio.com</strong>
+              Inquiries go directly to <strong>hello@wedesignsstudio.com</strong>
             </div>
           </form>
         </div>
@@ -1677,7 +1712,7 @@ const IMGS = {
             <svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <h3>Inquiry sent.</h3>
-          <p>We received your message and will get back to you within 1 business day at <strong>Hello@wedesignsstudio.com</strong>.</p>
+          <p>We received your message and will get back to you within 1 business day at <strong>hello@wedesignsstudio.com</strong>.</p>
         </div>
       </div>
     </div>
@@ -1806,7 +1841,7 @@ const IMGS = {
         <div class="section-label" style="margin-bottom:8px">Apply to Design With Us</div>
         <h3 style="font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.02em">Designer Application</h3>
         <p style="font-size:13px;color:var(--gray-400);margin-bottom:24px;line-height:1.55">Submit your details and portfolio. We'll review and reach out if it's a fit. No paid work begins until both parties sign a contractor agreement.</p>
-        <!-- INTEGRATION NOTE: Route to Hello@wedesignsstudio.com via Web3Forms/EmailJS.
+        <!-- INTEGRATION NOTE: Route to hello@wedesignsstudio.com via Web3Forms/EmailJS.
              Contract automation can later be connected via DocuSign, Dropbox Sign, or PandaDoc. -->
         <form id="designer-form" onsubmit="handleDesignerSubmit(event)">
           <div class="form-row">
@@ -1906,13 +1941,14 @@ const IMGS = {
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-copy">© 2026 We Design Studio · <a href="mailto:Hello@wedesignsstudio.com" style="color:inherit">Hello@wedesignsstudio.com</a> · Orlando, FL</div>
+    <div class="footer-copy">© 2026 We Design Studio · <a href="mailto:hello@wedesignsstudio.com" style="color:inherit">hello@wedesignsstudio.com</a> · Orlando, FL</div>
     <div class="footer-links">
       <a href="#services-section">Services</a>
       <a href="#pricing-section">Pricing</a>
       <a href="#transparency-section">Transparency</a>
       <a href="#designer-section">Design With Us</a>
       <a href="#contact-section">Contact</a>
+      <a href="careers.html">Careers</a>
       <a href="javascript:void(0)" onclick="showPage('admin')" style="color:var(--gray-300)">Admin</a>
     </div>
   </footer>
@@ -2281,6 +2317,33 @@ const IMGS = {
   </div>
 </div>
 
+<!-- ENTERPRISE QUOTE MODAL -->
+<div class="enterprise-modal-overlay" id="enterpriseModal" role="dialog" aria-modal="true" aria-labelledby="enterpriseModalTitle">
+  <div class="enterprise-modal">
+    <button class="enterprise-modal-close" onclick="closeEnterpriseModal()" aria-label="Close">&#x2715;</button>
+    <div class="enterprise-modal-eyebrow">Enterprise Creative Build</div>
+    <div class="enterprise-modal-price" id="enterpriseModalTitle">$5,000 – $10,000</div>
+    <div class="enterprise-modal-range">Scope-based one-time fee · Final quote confirmed before work begins</div>
+    <ul class="enterprise-modal-features">
+      <li>Website strategy + full design</li>
+      <li>Landing pages</li>
+      <li>Brand identity refinement</li>
+      <li>Promo content + social graphics</li>
+      <li>Business cards + flyers</li>
+      <li>Launch support</li>
+      <li>Dedicated project lead</li>
+      <li>Priority delivery</li>
+    </ul>
+    <div class="enterprise-modal-affirm">
+      <strong>Affirm payment plans available</strong> — split your project into monthly installments. 40% deposit → 30% at midpoint → 30% before final delivery.
+    </div>
+    <div class="enterprise-modal-cta">
+      <a href="#contact-section" class="enterprise-modal-btn-primary" onclick="closeEnterpriseModal();setTimeout(()=>document.querySelector('#contact-section').scrollIntoView({behavior:'smooth'}),100)">Submit an Inquiry →</a>
+      <button class="enterprise-modal-btn-secondary" onclick="closeEnterpriseModal()">Maybe later</button>
+    </div>
+  </div>
+</div>
+
 <!-- CLIENT LOGIN MODAL -->
 <div class="modal-overlay" id="login-modal">
   <div class="modal-box">
@@ -2301,7 +2364,7 @@ const IMGS = {
       <img id="admin-logo" src="assets/logo.svg" style="width:40px;height:40px;object-fit:contain;margin:0 auto 16px"/>
       <h2>Admin Portal</h2>
       <p>CEO / Creative Director login</p>
-      <input class="modal-input" type="email" id="admin-email-input" placeholder="Hello@wedesignsstudio.com" style="margin-bottom:10px"/>
+      <input class="modal-input" type="email" id="admin-email-input" placeholder="hello@wedesignsstudio.com" style="margin-bottom:10px"/>
       <input class="modal-input" type="password" id="admin-pass-input" placeholder="Password" style="margin-bottom:12px"/>
       <button class="modal-btn" onclick="adminLogin()">Sign In</button>
       <!-- REPLACE THIS MOCK LOGIN WITH REAL AUTHENTICATION BEFORE LAUNCH -->
@@ -2341,7 +2404,7 @@ const IMGS = {
     <div class="admin-main">
       <div class="admin-topbar">
         <h1>CEO / Creative Director Dashboard</h1>
-        <div style="font-size:12px;color:var(--gray-400)">Logged in as <strong>Hello@wedesignsstudio.com</strong></div>
+        <div style="font-size:12px;color:var(--gray-400)">Logged in as <strong>hello@wedesignsstudio.com</strong></div>
       </div>
       <div class="admin-panels">
 
@@ -2501,7 +2564,7 @@ async function handleContactSubmit(e) {
 
   // INTEGRATION NOTE: This form submits to Web3Forms.
   // To activate: replace YOUR_ACCESS_KEY_HERE in the hidden access_key input
-  // with your key from https://web3forms.com (free, ties to Hello@wedesignsstudio.com)
+  // with your key from https://web3forms.com (free, ties to hello@wedesignsstudio.com)
   const data = new FormData(form);
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
@@ -2516,12 +2579,12 @@ async function handleContactSubmit(e) {
     } else {
       btn.disabled = false;
       btn.textContent = 'Send Inquiry';
-      alert('Something went wrong. Please email us directly at Hello@wedesignsstudio.com');
+      alert('Something went wrong. Please email us directly at hello@wedesignsstudio.com');
     }
   } catch {
     btn.disabled = false;
     btn.textContent = 'Send Inquiry';
-    alert('Network error. Please email us directly at Hello@wedesignsstudio.com');
+    alert('Network error. Please email us directly at hello@wedesignsstudio.com');
   }
 }
 
@@ -2898,6 +2961,42 @@ async function sendHubMessage() {
 window.loadDashboard = loadDashboard;
 
 // ══════════════════════════════════════════════
+
+// ── ENTERPRISE MODAL ──────────────────────────────────────────────────────────
+function openEnterpriseModal() {
+  document.getElementById('enterpriseModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeEnterpriseModal() {
+  document.getElementById('enterpriseModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('enterpriseModal').addEventListener('click', function(e) {
+  if (e.target === this) closeEnterpriseModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeEnterpriseModal();
+});
+
+// ── STRIPE PAYMENT LINKS ──────────────────────────────────────────────────────
+// Replace placeholder URLs with live Stripe Payment Links from dashboard.stripe.com
+const STRIPE_LINKS = {
+  landingPage:          'https://buy.stripe.com/REPLACE_LANDING_PAGE',
+  fullWebsite:          'https://buy.stripe.com/REPLACE_FULL_WEBSITE',
+  brandKit:             'https://buy.stripe.com/REPLACE_BRAND_KIT',
+  flyerCardBundle:      'https://buy.stripe.com/REPLACE_FLYER_BUNDLE',
+  businessPresenceKit:  'https://buy.stripe.com/REPLACE_PRESENCE_KIT',
+};
+function goToCheckout(pkg) {
+  const url = STRIPE_LINKS[pkg];
+  if (url && !url.includes('REPLACE_')) {
+    window.open(url, '_blank', 'noopener');
+  } else {
+    // Stripe link not yet configured — fall back to inquiry form
+    document.querySelector('#contact-section').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 // CLIENT LOGIN MODAL
 // ══════════════════════════════════════════════
 function openLoginModal() {
@@ -2925,13 +3024,13 @@ async function doModalLogin() {
     if (data.error && String(data.error).toLowerCase().includes('invalid action')) {
       const fb = await fetch(`${API_URL}?action=getProject&email=${encodeURIComponent(email)}`);
       const fbData = await fb.json();
-      if (fbData.error) { alert("We couldn't find that email. Please contact Hello@wedesignsstudio.com"); return; }
+      if (fbData.error) { alert("We couldn't find that email. Please contact hello@wedesignsstudio.com"); return; }
       data = { role: 'client', project: fbData, messages: [], files: [] };
     } else if (data.error) { alert(data.error || 'Access Denied.'); return; }
     if (data.role === 'designer') { renderDesignerDashboard(Array.isArray(data.projects) ? data.projects : []); }
     else if (data.role === 'client' || data.project) { renderClientDashboard(data); }
     else { alert('Access Denied.'); }
-  } catch(err) { alert('Login failed. Please contact Hello@wedesignsstudio.com'); }
+  } catch(err) { alert('Login failed. Please contact hello@wedesignsstudio.com'); }
 }
 
 // ══════════════════════════════════════════════
@@ -2949,7 +3048,7 @@ function adminLogin() {
     document.getElementById('admin-dashboard').style.display = 'flex';
     adminLoadAll();
   } else {
-    alert('Incorrect credentials. (Prototype mode: use Hello@wedesignsstudio.com / wedesign2026)');
+    alert('Incorrect credentials. (Prototype mode: use hello@wedesignsstudio.com / wedesign2026)');
   }
 }
 
@@ -3134,7 +3233,7 @@ async function handleContactSubmit(e) {
       if (success) success.style.display = 'block';
     } else {
       btn.disabled = false; btn.textContent = 'Send Inquiry';
-      alert('Saved locally. To activate email delivery, add a Web3Forms key. Or email Hello@wedesignsstudio.com directly.');
+      alert('Saved locally. To activate email delivery, add a Web3Forms key. Or email hello@wedesignsstudio.com directly.');
     }
   } catch {
     // Even if email fails, local storage worked — show success
