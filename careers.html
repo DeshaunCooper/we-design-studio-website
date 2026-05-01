@@ -13,8 +13,10 @@
     :root {
       --ink: #111;
       --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
       --gray-300: #d1d5db;
       --gray-400: #9ca3af;
+      --gray-500: #6b7280;
       --gray-600: #4b5563;
       --purple: #7c3aed;
     }
@@ -26,40 +28,56 @@
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; height: 64px;
-      background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
-      border-bottom: 1px solid #f3f4f6;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
     }
     .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
     .nav-back { font-size: 13px; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 6px; }
     .nav-back:hover { color: var(--ink); }
 
-    /* ── HERO ── */
-    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 24px; }
-    .careers-inner { max-width: 640px; width: 100%; }
+    /* ── LAYOUT ── */
+    main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 1100px; margin: 0 auto; width: 100%; padding: 72px 40px; align-items: start; }
+
+    /* ── LEFT SIDE ── */
     .careers-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
-    .careers-h1 { font-size: clamp(48px, 8vw, 80px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 28px; }
-    .careers-sub { font-size: 17px; line-height: 1.7; color: var(--gray-600); margin-bottom: 40px; max-width: 520px; }
-    .careers-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ink); color: #fff;
-      font-size: 15px; font-weight: 600;
-      padding: 16px 28px; border-radius: 12px;
-      text-decoration: none; transition: background 0.15s;
-    }
-    .careers-cta:hover { background: #222; }
+    .careers-h1 { font-size: clamp(44px, 6vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 20px; }
+    .careers-sub { font-size: 16px; line-height: 1.7; color: var(--gray-500); margin-bottom: 36px; max-width: 440px; }
     .careers-note { margin-top: 20px; font-size: 13px; color: var(--gray-400); }
 
-    /* ── WHAT WE LOOK FOR ── */
-    .careers-traits { margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--gray-100); }
-    .traits-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 20px; }
-    .traits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .trait { background: var(--gray-100); border-radius: 12px; padding: 20px 20px; }
-    .trait-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-    .trait-desc { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
-    @media (max-width: 520px) {
-      nav { padding: 0 20px; }
-      .traits-grid { grid-template-columns: 1fr; }
+    /* ── TRAITS ── */
+    .careers-traits { margin-top: 48px; padding-right: 48px; }
+    .traits-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 16px; }
+    .traits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .trait { background: var(--gray-100); border-radius: 12px; padding: 18px 18px; }
+    .trait-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .trait-desc { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+
+    /* ── FORM SIDE ── */
+    .careers-form-wrap {
+      background: #fff; border: 1px solid var(--gray-200); border-radius: 20px;
+      padding: 36px 36px; position: sticky; top: 80px;
     }
+    .form-title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .form-sub { font-size: 13px; color: var(--gray-400); margin-bottom: 24px; line-height: 1.5; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 5px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-200); border-radius: 10px;
+      font-size: 14px; font-family: inherit; color: var(--ink); background: #fff;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #111; }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; background: var(--ink); color: #fff; border: none;
+      border-radius: 10px; padding: 14px; font-size: 14px; font-weight: 600;
+      font-family: inherit; cursor: pointer; transition: background 0.15s; margin-top: 4px;
+    }
+    .form-submit:hover { background: #222; }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-success { text-align: center; padding: 32px 0; display: none; }
+    .form-success-icon { margin: 0 auto 16px; }
 
     /* ── FOOTER ── */
     footer {
@@ -70,7 +88,15 @@
     }
     footer a { color: inherit; text-decoration: none; }
     footer a:hover { color: var(--ink); }
-    @media (max-width: 520px) { footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; padding: 48px 24px; gap: 48px; }
+      .careers-traits { padding-right: 0; }
+      nav { padding: 0 20px; }
+      footer { padding: 20px; flex-direction: column; text-align: center; }
+      .careers-form-wrap { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -84,13 +110,12 @@
   </nav>
 
   <main>
-    <div class="careers-inner">
+
+    <!-- LEFT — Intro + Traits -->
+    <div>
       <div class="careers-eyebrow">Careers</div>
       <h1 class="careers-h1">Join us.</h1>
-      <p class="careers-sub">We're a small studio doing work we're proud of. If you're a designer, creative director, or strategist who cares deeply about craft — send us your portfolio. We're always open to the right people.</p>
-      <a href="mailto:hello@wedesignsstudio.com?subject=Portfolio%20Submission&body=Hi%20We%20Design%20Studio%2C%0A%0AI'd%20love%20to%20share%20my%20portfolio%20with%20you.%0A%0A%5BYour%20name%2C%20portfolio%20link%2C%20and%20a%20note%20about%20yourself%5D" class="careers-cta">
-        Send Your Portfolio →
-      </a>
+      <p class="careers-sub">We're building a quiet network of designers, builders, and creative partners. Send your portfolio if you want to design with us.</p>
       <p class="careers-note">hello@wedesignsstudio.com · Orlando, FL</p>
 
       <div class="careers-traits">
@@ -115,6 +140,94 @@
         </div>
       </div>
     </div>
+
+    <!-- RIGHT — Application Form -->
+    <div class="careers-form-wrap">
+      <div id="designer-form-body">
+        <div class="form-title">Send your portfolio.</div>
+        <p class="form-sub">Tell us who you are and what you do. We'll reach out within 3–5 business days if it's a fit.</p>
+
+        <!-- Submits to /api/inquiry with inquiry_type: 'designer' -->
+        <form id="designer-application-form" onsubmit="handleDesignerApply(event)">
+          <input type="checkbox" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input class="form-input" type="text" name="name" placeholder="Jane Smith" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input class="form-input" type="email" name="email" placeholder="jane@email.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" name="phone" placeholder="(555) 000-0000"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Portfolio URL *</label>
+              <input class="form-input" type="url" name="portfolio" placeholder="https://yourportfolio.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Skill Level *</label>
+              <select class="form-select" name="skill_level" required>
+                <option value="" disabled selected>Select level...</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid-Level">Mid-Level</option>
+                <option value="Senior">Senior</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Availability *</label>
+              <select class="form-select" name="availability" required>
+                <option value="" disabled selected>Select...</option>
+                <option value="Part-time (contract)">Part-time (contract)</option>
+                <option value="Full-time (contract)">Full-time (contract)</option>
+                <option value="Project-by-project">Project-by-project</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Services Offered *</label>
+            <select class="form-select" name="services" required>
+              <option value="" disabled selected>Primary service...</option>
+              <option value="Web Design">Web Design</option>
+              <option value="Brand Identity">Brand Identity</option>
+              <option value="Promo Content (Flyers, Cards, Social)">Promo Content (Flyers, Cards, Social)</option>
+              <option value="Swift / iOS Development">Swift / iOS Development</option>
+              <option value="Creative Direction">Creative Direction</option>
+              <option value="Multiple / Full Stack Creative">Multiple / Full Stack Creative</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" name="message" placeholder="Tell us a bit about yourself, what you love designing, and what you're looking for in a creative partnership..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="designer-apply-btn">
+            Send Portfolio →
+          </button>
+          <div style="font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px">
+            Sent directly to <strong>hello@wedesignsstudio.com</strong>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-success" id="designer-form-success">
+        <div class="form-success-icon">
+          <svg width="48" height="48" fill="none" stroke="#16a34a" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:8px">Application sent.</h3>
+        <p style="font-size:14px;color:var(--gray-500);line-height:1.6">We received your portfolio and will review it within 3–5 business days. If it's a fit, we'll reach out at your email address.</p>
+        <p style="font-size:13px;color:var(--gray-400);margin-top:12px">hello@wedesignsstudio.com</p>
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -122,5 +235,55 @@
     <a href="index.html">wedesignsstudio.com</a>
   </footer>
 
+  <script>
+    async function handleDesignerApply(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = document.getElementById('designer-apply-btn');
+      const fd = new FormData(form);
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      // Honeypot check
+      if (fd.get('_honey')) return;
+
+      const payload = {
+        inquiry_type: 'designer',
+        name: fd.get('name') || '',
+        email: fd.get('email') || '',
+        phone: fd.get('phone') || '',
+        portfolio: fd.get('portfolio') || '',
+        skill_level: fd.get('skill_level') || '',
+        services: fd.get('services') || '',
+        availability: fd.get('availability') || '',
+        message: fd.get('message') || '',
+      };
+
+      try {
+        const res = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success || res.ok) {
+          // Save to localStorage for admin prototype
+          const apps = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
+          apps.unshift({ ...payload, date: new Date().toLocaleString(), status: 'New' });
+          localStorage.setItem('wd_designer_apps', JSON.stringify(apps));
+          document.getElementById('designer-form-body').style.display = 'none';
+          document.getElementById('designer-form-success').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Portfolio →';
+          alert(data.error || 'Something went wrong. Please email hello@wedesignsstudio.com');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send Portfolio →';
+        alert('Network error. Please email hello@wedesignsstudio.com directly.');
+      }
+    }
+  </script>
 </body>
 </html>

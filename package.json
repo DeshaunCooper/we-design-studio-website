@@ -1,0 +1,11 @@
+{
+  "name": "we-design-studio-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "We Design Studio — official studio website",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "nodemailer": "^6.9.14",
+    "stripe": "^14.25.0"
+  }
+}

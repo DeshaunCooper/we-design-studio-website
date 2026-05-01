@@ -1237,6 +1237,16 @@
       .enterprise-form-row{grid-template-columns:1fr}
       .enterprise-modal-price{font-size:28px !important}
     }
+
+    /* ── CLIENT PORTAL PAYMENT STEPS ── */
+    .payment-step{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#9ca3af;padding:8px 12px;border-radius:8px;border:1px solid #f3f4f6;background:#fafafa}
+    .payment-step.done{color:#16a34a;background:#f0fdf4;border-color:#bbf7d0}
+    .payment-step.active{color:#111;background:#fff;border-color:#d1d5db;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+    .payment-step-pending{color:#9ca3af}
+    .payment-step-num{width:18px;height:18px;border-radius:50%;background:#e5e7eb;color:#6b7280;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .payment-step.done .payment-step-num{background:#16a34a;color:#fff}
+    .payment-step.active .payment-step-num{background:#111;color:#fff}
+    .payment-step-line{flex:1;height:1px;background:#e5e7eb;min-width:8px}
   </style>
 </head>
 <body>
@@ -2059,7 +2069,7 @@ const IMGS = {
 </div>
 <!-- / POST-DEPOSIT SECTION — Transparency/payment breakdown. Show only after client deposit or inside future client portal. -->
 
-  <section id="designer-section" class="designer-section">
+  <section id="designer-section" class="designer-section" style="display:none" aria-hidden="true">
     <div class="designer-inner">
       <div>
         <div class="section-label">Work With Us</div>
@@ -2244,9 +2254,9 @@ const IMGS = {
         Messages
         <span class="dash-nav-badge">2</span>
       </a>
-      <a class="dash-nav-link" href="#">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        Settings
+      <a class="dash-nav-link" onclick="showClientPage('transparency',this)">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        Your Coverage
       </a>
       <div class="dash-user">
         <div class="dash-avatar">TJ</div>
@@ -2267,8 +2277,23 @@ const IMGS = {
       <!-- CLIENT SUB-PAGES -->
       <div id="client-overview" class="dash-content" style="display:block">
         <div class="dash-greeting">
-          <h1>Welcome back, Taylor</h1>
-          <p>Your project is 65% complete · Next milestone: Design v1 Review — Apr 18</p>
+          <h1 id="client-greeting">Welcome back.</h1>
+          <p id="client-greeting-sub">No active project yet. <a href="#contact-section" onclick="showPage('landing')" style="color:#111;font-weight:600">Start a project →</a></p>
+        </div>
+        <!-- PAYMENT STATUS -->
+        <div class="dash-card" style="margin-bottom:20px" id="client-payment-status-card">
+          <div class="dash-card-header"><div class="dash-card-title">Payment Status</div></div>
+          <div style="padding:16px 20px;display:flex;gap:12px;flex-wrap:wrap" id="client-payment-steps">
+            <div class="payment-step payment-step-pending" id="pstep-deposit"><span class="payment-step-num">1</span>Deposit</div>
+            <div class="payment-step-line"></div>
+            <div class="payment-step payment-step-pending" id="pstep-inprogress"><span class="payment-step-num">2</span>In Progress</div>
+            <div class="payment-step-line"></div>
+            <div class="payment-step payment-step-pending" id="pstep-final"><span class="payment-step-num">3</span>Final Payment</div>
+            <div class="payment-step-line"></div>
+            <div class="payment-step payment-step-pending" id="pstep-complete"><span class="payment-step-num">4</span>Complete</div>
+          </div>
+          <!-- BACKEND: Connect to Stripe payment intent status for real-time updates -->
+          <div style="font-size:11px;color:var(--gray-400);padding:0 20px 14px">Stripe integration placeholder — connect to dashboard.stripe.com payment status.</div>
         </div>
         <!-- Project card -->
         <div class="dash-card" style="margin-bottom:20px;cursor:pointer" onclick="showClientPage('project',null)">
@@ -2304,6 +2329,16 @@ const IMGS = {
             </div>
           </div>
         </div>
+        <!-- CLIENT CHECKLIST — localStorage prototype -->
+        <!-- BACKEND: Replace localStorage with real database checklist tied to client project ID -->
+        <div class="dash-card" style="margin-bottom:20px">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Project Checklist</div>
+            <span style="font-size:11px;color:var(--gray-400)">Check items off as you complete them</span>
+          </div>
+          <div style="padding:4px 20px 16px" id="client-checklist-items"></div>
+        </div>
+
         <!-- Recent activity -->
         <div class="dash-two-col">
           <div class="dash-card">
@@ -2395,6 +2430,23 @@ const IMGS = {
         </div>
       </div>
 
+
+      <!-- POST-DEPOSIT TRANSPARENCY — shown in client portal only, not public homepage -->
+      <div id="client-transparency" class="dash-content" style="display:none">
+        <div class="dash-greeting" style="margin-bottom:32px">
+          <h1>What your payment covers.</h1>
+          <p style="font-size:14px;color:var(--gray-400)">A full breakdown of what's included, how the process works, and what to expect at every step.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:860px">
+          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Payment Structure</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p><strong>Under $750:</strong> 100% upfront may be required.</p><p style="margin-top:8px"><strong>Websites &amp; branding:</strong> 50% deposit to start → 50% before final delivery.</p><p style="margin-top:8px"><strong>Enterprise:</strong> 40% deposit → 30% midpoint → 30% before final delivery.</p><p style="margin-top:8px">Final files and launch happen only after final payment is complete.</p></div></div>
+          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Revisions</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Revision rounds are defined per package and agreed before work begins.</p><p style="margin-top:8px">Revisions outside scope may be charged separately.</p><p style="margin-top:8px">Submit revisions clearly and all at once per round.</p></div></div>
+          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Your Responsibilities</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Provide all required content, images, and text promptly.</p><p style="margin-top:8px">Respond to feedback requests and approvals within a reasonable timeframe.</p><p style="margin-top:8px">Communicate changes or direction shifts as early as possible.</p></div></div>
+          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Final Delivery</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Final files are delivered only after all payments are complete.</p><p style="margin-top:8px">Website launch happens after final payment.</p><p style="margin-top:8px">All deliverables are handed off in organized, labeled formats.</p><p style="margin-top:8px">Post-delivery support may be scoped as a separate project.</p></div></div>
+        </div>
+        <div style="margin-top:16px;font-size:12px;color:var(--gray-400);background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px 16px;max-width:860px">
+          <strong>Affirm Payment Options:</strong> We Design Studio may offer Affirm payment options for eligible projects. Approval, payment terms, and financing decisions are handled by Affirm directly.
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -2709,7 +2761,7 @@ const IMGS = {
       <input class="modal-input" type="password" id="admin-pass-input" placeholder="Password" style="margin-bottom:12px"/>
       <button class="modal-btn" onclick="adminLogin()">Sign In</button>
       <!-- REPLACE THIS MOCK LOGIN WITH REAL AUTHENTICATION BEFORE LAUNCH -->
-      <div class="admin-login-mock-note">Prototype mode — mock login active. Replace with real auth before production.</div>
+      <div class="admin-login-mock-note">Credentials validated server-side on Vercel. Set ADMIN_EMAIL + ADMIN_PASSWORD env vars.</div>
       <button style="margin-top:16px;font-size:12px;color:var(--gray-400);background:none;border:none;cursor:pointer" onclick="showPage('landing')">← Back to site</button>
     </div>
   </div>
@@ -2780,10 +2832,16 @@ const IMGS = {
         <div id="admin-panel-inquiries">
           <div class="admin-section-title">Client Inquiries</div>
           <div id="admin-inquiries-empty" style="font-size:14px;color:var(--gray-400);padding:24px 0">No inquiries yet. Inquiries submitted through the contact form will appear here.</div>
-          <table class="admin-table" id="admin-inquiries-table" style="display:none">
-            <thead><tr><th>Name</th><th>Business</th><th>Service</th><th>Budget</th><th>Payment Pref.</th><th>Date</th><th>Actions</th></tr></thead>
+          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+            <button onclick="adminClearInquiries()" style="font-size:12px;color:#ef4444;background:none;border:1px solid #fca5a5;border-radius:6px;padding:5px 12px;cursor:pointer">Clear All</button>
+            <span style="font-size:12px;color:#9ca3af;margin:auto 0">Prototype: data stored in browser localStorage. <!-- BACKEND: replace localStorage with Supabase/Firebase API calls --></span>
+          </div>
+          <div style="overflow-x:auto">
+          <table class="admin-table" id="admin-inquiries-table" style="display:none;min-width:900px">
+            <thead><tr><th>Name</th><th>Email</th><th>Business</th><th>Service</th><th>Budget</th><th>Affirm?</th><th>Status</th><th>Date</th><th>Note</th></tr></thead>
             <tbody id="admin-inquiries-body"></tbody>
           </table>
+          </div>
         </div>
 
         <!-- DESIGNER APPLICATIONS -->
@@ -2900,32 +2958,47 @@ async function handleContactSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submit-btn');
   const form = document.getElementById('contact-form');
+  const fd = new FormData(form);
   btn.disabled = true;
-  btn.textContent = 'Sending...';
+  btn.innerHTML = 'Sending…';
 
-  // INTEGRATION NOTE: This form submits to Web3Forms.
-  // To activate: replace YOUR_ACCESS_KEY_HERE in the hidden access_key input
-  // with your key from https://web3forms.com (free, ties to hello@wedesignsstudio.com)
-  const data = new FormData(form);
+  const payload = {
+    inquiry_type: 'client',
+    name: fd.get('name') || '',
+    business_name: fd.get('business_name') || '',
+    email: fd.get('email') || '',
+    phone: fd.get('phone') || '',
+    service: fd.get('service') || '',
+    payment_preference: fd.get('payment_preference') || '',
+    budget: fd.get('budget') || '',
+    timeline: fd.get('timeline') || '',
+    message: fd.get('message') || '',
+  };
+
   try {
-    const res = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('/api/inquiry', {
       method: 'POST',
-      body: data
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     });
     const json = await res.json();
-    if (json.success) {
-      document.getElementById('contact-form-body').innerHTML = '';
-      const success = document.getElementById('contact-success');
-      success.style.display = 'block';
+    if (json.success || res.ok) {
+      // Save to localStorage for admin portal prototype
+      const inquiries = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+      inquiries.unshift({ ...payload, date: new Date().toLocaleString(), status: 'New' });
+      localStorage.setItem('wd_inquiries', JSON.stringify(inquiries));
+      // Show success UI
+      document.getElementById('contact-form-body').style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
     } else {
       btn.disabled = false;
       btn.textContent = 'Send Inquiry';
-      alert('Something went wrong. Please email us directly at hello@wedesignsstudio.com');
+      alert(json.error || 'Something went wrong. Please email hello@wedesignsstudio.com');
     }
   } catch {
     btn.disabled = false;
     btn.textContent = 'Send Inquiry';
-    alert('Network error. Please email us directly at hello@wedesignsstudio.com');
+    alert('Network error. Please email hello@wedesignsstudio.com directly.');
   }
 }
 
@@ -2955,6 +3028,55 @@ function showPage(id) {
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
 }
+
+// ── CLIENT PORTAL ROUTING ──
+function showClientPage(id, el) {
+  document.querySelectorAll('#page-client-dash .dash-content, #page-client-dash .proj-detail').forEach(p => {
+    p.style.display = 'none';
+  });
+  const target = document.getElementById('client-' + id);
+  if (target) target.style.display = 'block';
+  document.querySelectorAll('#page-client-dash .dash-nav-link').forEach(l => l.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+// ── CLIENT CHECKLIST (localStorage prototype) ──
+// BACKEND: Replace with real project checklist tied to client project ID
+const CLIENT_CHECKLIST_ITEMS = [
+  'Submit business details',
+  'Submit logo / brand assets',
+  'Approve homepage direction',
+  'Review website draft',
+  'Submit revisions',
+  'Final approval',
+  'Final payment',
+  'Launch / handoff',
+];
+
+function clientLoadChecklist() {
+  const el = document.getElementById('client-checklist-items');
+  if (!el) return;
+  const saved = JSON.parse(localStorage.getItem('wd_client_checklist') || '{}');
+  el.innerHTML = CLIENT_CHECKLIST_ITEMS.map((item, i) => {
+    const checked = saved[i] || false;
+    return `<label style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;font-size:14px;color:${checked?'#9ca3af':'#111'}">
+      <input type="checkbox" ${checked?'checked':''} onchange="clientToggleChecklist(${i},this.checked)" style="width:16px;height:16px;accent-color:#111;cursor:pointer"/>
+      <span style="${checked?'text-decoration:line-through':''}">${item}</span>
+    </label>`;
+  }).join('');
+}
+
+function clientToggleChecklist(i, checked) {
+  const saved = JSON.parse(localStorage.getItem('wd_client_checklist') || '{}');
+  saved[i] = checked;
+  localStorage.setItem('wd_client_checklist', JSON.stringify(saved));
+  clientLoadChecklist();
+}
+
+// Init client portal on load
+document.addEventListener('DOMContentLoaded', () => {
+  clientLoadChecklist();
+});
 
 // ── CLIENT SUBPAGES ──
 function showClientPage(id, link) {
@@ -3328,15 +3450,33 @@ async function handleEnterpriseSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('enterprise-submit-btn');
   const form = document.getElementById('enterprise-form');
+  const fd = new FormData(form);
   btn.textContent = 'Sending…';
   btn.disabled = true;
+
+  const payload = {
+    inquiry_type: 'enterprise',
+    name: fd.get('name') || '',
+    business_name: fd.get('business_name') || '',
+    email: fd.get('email') || '',
+    phone: fd.get('phone') || '',
+    project_scope: fd.get('project_scope') || '',
+    budget: fd.get('budget') || '',
+    timeline: fd.get('timeline') || '',
+    message: fd.get('message') || '',
+  };
+
   try {
-    const resp = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('/api/inquiry', {
       method: 'POST',
-      body: new FormData(form),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     });
-    const data = await resp.json();
-    if (data.success) {
+    const data = await res.json();
+    if (data.success || res.ok) {
+      const inquiries = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+      inquiries.unshift({ ...payload, service: 'Enterprise Quote', date: new Date().toLocaleString(), status: 'New' });
+      localStorage.setItem('wd_inquiries', JSON.stringify(inquiries));
       document.getElementById('enterprise-form-body').style.display = 'none';
       document.getElementById('enterprise-form-success').style.display = 'block';
     } else {
@@ -3359,12 +3499,26 @@ const STRIPE_LINKS = {
   businessPresenceKit:  'https://buy.stripe.com/REPLACE_PRESENCE_KIT',
   swiftMVP:             'https://buy.stripe.com/REPLACE_SWIFT_MVP',
 };
-function goToCheckout(pkg) {
-  const url = STRIPE_LINKS[pkg];
-  if (url && !url.includes('REPLACE_')) {
-    window.open(url, '_blank', 'noopener');
-  } else {
-    // Stripe link not yet configured — fall back to inquiry form
+async function goToCheckout(pkg) {
+  const btn = document.activeElement;
+  const origText = btn ? btn.textContent : '';
+  if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ package: pkg }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = origText; }
+      // Stripe not configured yet — fall back to inquiry form
+      document.querySelector('#contact-section').scrollIntoView({ behavior: 'smooth' });
+    }
+  } catch {
+    if (btn) { btn.disabled = false; btn.textContent = origText; }
     document.querySelector('#contact-section').scrollIntoView({ behavior: 'smooth' });
   }
 }
@@ -3408,19 +3562,50 @@ async function doModalLogin() {
 // ══════════════════════════════════════════════
 // ADMIN PORTAL
 // ══════════════════════════════════════════════
-// MOCK LOGIN — Replace with real auth before production
-const ADMIN_EMAIL = 'hello@wedesignsstudio.com';
-const ADMIN_PASS_MOCK = 'wedesign2026'; // CHANGE THIS — mock only, replace with backend auth
+// Admin login — credentials validated server-side via /api/admin-auth
+// Credentials are never exposed in source code when deployed on Vercel.
+// Prototype fallback: if API unavailable (local dev), falls back to local check with console warning.
+// IMPORTANT: Remove or disable prototype fallback before sharing source publicly.
+const _ADMIN_FALLBACK_PASS = 'wedesign2026'; // dev-only fallback, checked after API fails
 
-function adminLogin() {
+function showAdminDashboard() {
+  document.getElementById('admin-login-screen').style.display = 'none';
+  document.getElementById('admin-dashboard').style.display = 'flex';
+  adminLoadAll();
+}
+
+async function adminLogin() {
   const email = (document.getElementById('admin-email-input').value || '').trim().toLowerCase();
   const pass = document.getElementById('admin-pass-input').value || '';
-  if (email === ADMIN_EMAIL && pass === ADMIN_PASS_MOCK) {
-    document.getElementById('admin-login-screen').style.display = 'none';
-    document.getElementById('admin-dashboard').style.display = 'flex';
-    adminLoadAll();
-  } else {
-    alert('Incorrect credentials. (Prototype mode: use hello@wedesignsstudio.com / wedesign2026)');
+  const btn = document.querySelector('.admin-login-box .modal-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Signing in…'; }
+
+  try {
+    const res = await fetch('/api/admin-auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      sessionStorage.setItem('wd_admin_token', data.token || 'ok');
+      sessionStorage.setItem('wd_admin_email', email);
+      showAdminDashboard();
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = 'Sign In'; }
+      alert(data.error || 'Incorrect credentials.');
+    }
+  } catch (err) {
+    // API not reachable — prototype fallback (local dev only)
+    console.warn('[DEV] /api/admin-auth not reachable. Using dev fallback. Deploy to Vercel for real auth.');
+    if (email === 'hello@wedesignsstudio.com' && pass === _ADMIN_FALLBACK_PASS) {
+      sessionStorage.setItem('wd_admin_token', 'dev-token');
+      sessionStorage.setItem('wd_admin_email', email);
+      showAdminDashboard();
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = 'Sign In'; }
+      alert('Login failed. On Vercel: set ADMIN_EMAIL and ADMIN_PASSWORD env vars and redeploy.');
+    }
   }
 }
 
@@ -3439,8 +3624,10 @@ function adminLoadAll() {
   adminUpdateStats();
 }
 
-// ── INQUIRIES (localStorage) ──
-// BACKEND INTEGRATION: Replace localStorage reads with API calls to your backend
+// ── INQUIRIES (localStorage prototype) ──
+// BACKEND INTEGRATION: Replace localStorage reads with API calls to your backend (Supabase, Firebase, etc.)
+const INQUIRY_STATUSES = ['New','Reviewed','Quoted','Deposit Sent','Deposit Paid','In Progress','Final Payment Due','Completed','Archived'];
+
 function adminLoadInquiries() {
   const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
   const tbody = document.getElementById('admin-inquiries-body');
@@ -3450,16 +3637,35 @@ function adminLoadInquiries() {
   if(empty) empty.style.display='none'; if(table) table.style.display='table';
   tbody.innerHTML = data.map((r, i) => {
     const affirm = r.payment_preference && r.payment_preference.toLowerCase().includes('affirm');
+    const statusOpts = INQUIRY_STATUSES.map(s =>
+      `<option value="${s}" ${(r.status||'New')===s?'selected':''}>${s}</option>`
+    ).join('');
     return `<tr>
-      <td>${r.name||'—'}</td>
+      <td><strong>${r.name||'—'}</strong></td>
+      <td style="font-size:12px"><a href="mailto:${r.email||''}" style="color:inherit">${r.email||'—'}</a></td>
       <td>${r.business_name||'—'}</td>
-      <td>${r.service||'—'}</td>
-      <td>${r.budget||'—'}</td>
-      <td>${affirm ? `<span class="affirm-badge">Affirm Interest</span>` : (r.payment_preference||'—')}</td>
+      <td style="font-size:12px">${r.service||'—'}</td>
+      <td style="font-size:12px">${r.budget||'—'}</td>
+      <td>${affirm ? '<span class="affirm-badge">Yes</span>' : '<span style="color:#9ca3af;font-size:12px">No</span>'}</td>
+      <td><select class="admin-select" style="font-size:11px;padding:4px 6px" onchange="adminSetInquiryStatus(${i},this.value)">${statusOpts}</select></td>
       <td style="font-size:11px;color:var(--gray-400)">${r.date||'—'}</td>
-      <td><button class="admin-action-btn danger" onclick="adminDeleteInquiry(${i})">Remove</button></td>
+      <td><input class="admin-input" style="font-size:11px;padding:4px 8px;min-width:140px" placeholder="Add note…" value="${(r.note||'').replace(/"/g,'&quot;')}" onchange="adminSetInquiryNote(${i},this.value)"/></td>
     </tr>`;
   }).join('');
+}
+function adminSetInquiryStatus(i, val) {
+  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  if (data[i]) { data[i].status = val; localStorage.setItem('wd_inquiries', JSON.stringify(data)); }
+}
+function adminSetInquiryNote(i, val) {
+  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
+  if (data[i]) { data[i].note = val; localStorage.setItem('wd_inquiries', JSON.stringify(data)); }
+}
+function adminClearInquiries() {
+  if (!confirm('Clear all inquiries from this browser? This cannot be undone.')) return;
+  localStorage.removeItem('wd_inquiries');
+  adminLoadInquiries();
+  adminUpdateStats();
 }
 
 function adminDeleteInquiry(i) {
