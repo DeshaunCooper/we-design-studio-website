@@ -2,9 +2,9 @@
   "name": "we-design-studio-website",
   "version": "1.0.0",
   "private": true,
-  "description": "We Design Studio — official studio website",
+  "description": "We Design Studio — official studio website on Cloudflare Pages",
   "engines": { "node": ">=18" },
-  "dependencies": {
-    "nodemailer": "^6.9.14"
+  "devDependencies": {
+    "wrangler": "^3.57.0"
   }
 }

@@ -3,3 +3,5 @@
 we-design-extreme-scaffold.zip
 we-design-google-sheet-template.xlsx
 Weimages/
+.vercel
+node_modules/
