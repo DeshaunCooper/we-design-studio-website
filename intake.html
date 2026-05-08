@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Intake — We Design Studio</title>
+  <meta name="description" content="Submit your project details to We Design Studio. Let's get started."/>
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #111827;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #fafafa;
+      color: var(--ink);
+    }
+    .intake-wrap {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .intake-header {
+      padding: 20px 32px;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .intake-header a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .intake-header img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+    .intake-header span {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .intake-form-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .tally-frame {
+      flex: 1;
+      width: 100%;
+      min-height: calc(100vh - 62px);
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="intake-wrap">
+    <header class="intake-header">
+      <a href="index.html">
+        <img src="assets/logo.svg" alt="We Design Studio"/>
+        <span>We Design Studio</span>
+      </a>
+    </header>
+    <div class="intake-form-container">
+      <iframe
+        data-tally-src="https://tally.so/r/yPjPk8?transparentBackground=1&formEventsForwarding=1"
+        class="tally-frame"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="We Design Studio — Project Intake">
+      </iframe>
+    </div>
+  </div>
+</body>
+</html>

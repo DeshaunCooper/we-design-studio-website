@@ -705,10 +705,14 @@
       .pricing-grid{grid-template-columns:1fr}
       .cx-inner{grid-template-columns:1fr;gap:40px}
       footer{padding:20px 24px;flex-direction:column;gap:12px;text-align:center}
-      .dash-sidebar{display:none}
       .dash-content,.proj-detail{padding:20px}
       .stat-row{grid-template-columns:1fr}
       .dash-two-col{grid-template-columns:1fr}
+    }
+    @media(max-width:768px){
+      .dash-sidebar{display:none}
+      .portal-bot-nav{display:flex!important}
+      .dash-main{padding-bottom:68px}
     }
 
     /* Smooth transitions */
@@ -1088,12 +1092,30 @@
       .transparency-grid{grid-template-columns:1fr}
       .designer-inner{grid-template-columns:1fr;gap:40px}
       .admin-stats{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
       .admin-sidebar{display:none}
+      .admin-main{padding-bottom:68px}
+      .portal-bot-nav{display:flex!important}
     }
     @media(max-width:640px){
       .pricing-grid{grid-template-columns:1fr!important}
       .admin-stats{grid-template-columns:1fr}
     }
+    .portal-bot-nav{
+      display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+      background:#fff;border-top:1px solid #e5e7eb;
+      padding:6px 0 max(6px,env(safe-area-inset-bottom));
+      justify-content:space-around;align-items:center;
+    }
+    .pbn-item{
+      display:flex;flex-direction:column;align-items:center;gap:2px;
+      cursor:pointer;padding:4px 10px;border-radius:8px;
+      font-size:10px;color:#9ca3af;font-family:Inter,sans-serif;font-weight:500;
+      transition:color .15s;min-width:48px;
+    }
+    .pbn-item svg{width:20px;height:20px;stroke-width:1.75}
+    .pbn-item.active,.pbn-item:active{color:#111}
     #chat-history{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;max-height:380px;overflow:auto}
     .msg-designer,.msg-client{padding:12px 14px;border-radius:12px}
     .msg-designer{background:#f3f4f6;color:#111}
@@ -1281,7 +1303,6 @@ const IMGS = {
       <a href="#contact-section">Contact</a>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
-      <button class="topnav-cta-ghost" onclick="openLoginModal()">Client Login</button>
       <a href="#contact-section" class="topnav-cta">Start a Project</a>
     </div>
   </nav>
@@ -1583,7 +1604,7 @@ const IMGS = {
           <li>Contact section</li>
           <li>Call-to-action section</li>
         </ul>
-        <button onclick="goToCheckout('landingPage')" class="pricing-btn">Start Landing Page →</button>
+        <a href="#" class="pricing-btn">Start Landing Page →</a>
         <div class="pricing-affirm-note">Affirm options available for eligible projects</div>
       </div>
 
@@ -1601,7 +1622,7 @@ const IMGS = {
           <li>Basic SEO structure</li>
           <li>Contact form</li>
         </ul>
-        <button onclick="goToCheckout('fullWebsite')" class="pricing-btn">Start Full Website →</button>
+        <a href="#" class="pricing-btn">Start Full Website →</a>
         <div class="pricing-affirm-note" style="color:rgba(255,255,255,0.45)">Affirm options available for eligible projects</div>
       </div>
 
@@ -1619,7 +1640,7 @@ const IMGS = {
           <li>Starter UI system</li>
           <li>Prototype-ready structure</li>
         </ul>
-        <button onclick="goToCheckout('swiftMVP')" class="pricing-btn">Start App MVP →</button>
+        <a href="#" class="pricing-btn">Start App MVP →</a>
         <div class="pricing-affirm-note">Affirm options available for eligible projects</div>
       </div>
 
@@ -1638,6 +1659,71 @@ const IMGS = {
     </div>
     <p style="text-align:center;font-size:12px;color:var(--gray-400);margin-top:20px;max-width:560px;margin-left:auto;margin-right:auto">All pricing is a starting point. Final scope and cost confirmed before work begins. Affirm payment options may be available for eligible projects.</p>
   </section>
+
+<!-- DIGITAL CARE PLANS -->
+<section class="pricing-section" id="care-plans-section" style="padding-top:60px">
+  <div class="section-label" style="text-align:center;margin-bottom:16px">Digital Care Plans</div>
+  <h2 class="pricing-headline" style="text-align:center">Keep your site healthy and growing.</h2>
+  <p style="text-align:center;font-size:15px;color:var(--gray-500);max-width:600px;margin:0 auto 48px">Your site includes <strong>100% Free Edge Hosting forever</strong>. These Care Plans are entirely optional — they're for clients who want ongoing maintenance, speed optimization, and strategic support beyond the initial build.</p>
+
+  <div class="pricing-grid">
+
+    <!-- CARD 01 — SECURITY & SPEED -->
+    <div class="pricing-card">
+      <div class="pricing-tier">01</div>
+      <div class="pricing-price">$149</div>
+      <div class="pricing-period">/ month</div>
+      <div class="pricing-package-name">Security & Speed</div>
+      <p class="pricing-desc">Core maintenance and performance care to keep your site fast, secure, and always online.</p>
+      <ul class="pricing-items">
+        <li>Monthly security scans</li>
+        <li>Performance monitoring</li>
+        <li>Uptime monitoring</li>
+        <li>Dependency & plugin updates</li>
+        <li>Monthly status report</li>
+      </ul>
+      <a href="#" class="pricing-btn">Get Security & Speed →</a>
+    </div>
+
+    <!-- CARD 02 — CONCIERGE (featured) -->
+    <div class="pricing-card featured">
+      <div class="pricing-tier">02</div>
+      <div class="pricing-price">$249</div>
+      <div class="pricing-period">/ month</div>
+      <div class="pricing-package-name">Concierge</div>
+      <p class="pricing-desc">Everything in Security & Speed, plus hands-on edits and priority support so your site evolves without the back-and-forth.</p>
+      <ul class="pricing-items">
+        <li>Everything in Security & Speed</li>
+        <li>Up to 2 hours of edits / month</li>
+        <li>Content & copy updates</li>
+        <li>Priority email support</li>
+        <li>Quarterly strategy check-in</li>
+      </ul>
+      <a href="#" class="pricing-btn">Get Concierge →</a>
+    </div>
+
+    <!-- CARD 03 — GROWTH PARTNER -->
+    <div class="pricing-card">
+      <div class="pricing-tier">03</div>
+      <div class="pricing-price">$750</div>
+      <div class="pricing-period">/ month</div>
+      <div class="pricing-package-name">Growth Partner</div>
+      <p class="pricing-desc">A dedicated creative partner. Ongoing design, development, and strategy to help your brand grow every month.</p>
+      <ul class="pricing-items">
+        <li>Everything in Concierge</li>
+        <li>Up to 8 hours of creative work</li>
+        <li>New pages or features each month</li>
+        <li>Monthly analytics review</li>
+        <li>Direct Slack / text access</li>
+      </ul>
+      <a href="#" class="pricing-btn">Get Growth Partner →</a>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:var(--gray-400);margin-top:20px;max-width:560px;margin-left:auto;margin-right:auto">Care Plans are month-to-month. Cancel anytime. Free hosting is included regardless of plan.</p>
+</section>
+
 <!-- POST-DEPOSIT SECTION — Client experience detail. Show after deposit or inside client portal. -->
 <div style="display:none" aria-hidden="true">
   <!-- CLIENT EXPERIENCE -->
@@ -1872,7 +1958,7 @@ const IMGS = {
       <div class="contact-form-wrap">
         <div id="contact-form-body">
           <!-- INTEGRATION: Web3Forms — replace YOUR_ACCESS_KEY with key from web3forms.com -->
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContactSubmit(event)">
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"/>
             <input type="hidden" name="subject" value="New Project Inquiry — We Design Studio"/>
             <input type="hidden" name="from_name" value="We Design Studio Website"/>
@@ -2220,414 +2306,8 @@ const IMGS = {
       <a href="#work-section">Work</a>
       <a href="#contact-section">Contact</a>
       <a href="careers.html">Careers</a>
-      <a href="javascript:void(0)" onclick="showPage('admin')" style="color:var(--gray-300)">Admin</a>
     </div>
   </footer>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: CLIENT DASHBOARD
-════════════════════════════════════════ -->
-<div id="page-client-dash" class="page" data-login-root="client-dashboard">
-  <div class="dash-layout">
-
-    <!-- Sidebar -->
-    <aside class="dash-sidebar">
-      <div class="dash-logo">
-        <img id="cdash-logo" src="" alt="WD" style="width:24px;height:24px;object-fit:contain"/>
-        We Design.
-      </div>
-      <a class="dash-nav-link active" onclick="showClientPage('overview',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Overview
-      </a>
-      <a class="dash-nav-link" onclick="showClientPage('project',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg>
-        My Project
-      </a>
-      <a class="dash-nav-link" onclick="showClientPage('files',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-        Files
-      </a>
-      <a class="dash-nav-link" onclick="showClientPage('messages',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
-        Messages
-        <span class="dash-nav-badge">2</span>
-      </a>
-      <a class="dash-nav-link" onclick="showClientPage('transparency',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-        Your Coverage
-      </a>
-      <div class="dash-user">
-        <div class="dash-avatar">TJ</div>
-        <div><div class="dash-user-name">Taylor John</div><div class="dash-user-role">Client</div></div>
-      </div>
-    </aside>
-
-    <!-- Main -->
-    <div class="dash-main">
-      <div class="dash-topbar">
-        <div class="dash-topbar-links">
-          <a href="#" onclick="showPage('landing');return false">← Back to site</a>
-          <a href="#" onclick="showPage('designer-dash');return false">Designer View</a>
-        </div>
-        <button class="topnav-cta" style="font-size:12px;padding:7px 16px" onclick="showPage('landing')">Start</button>
-      </div>
-
-      <!-- CLIENT SUB-PAGES -->
-      <div id="client-overview" class="dash-content" style="display:block">
-        <div class="dash-greeting">
-          <h1 id="client-greeting">Welcome back.</h1>
-          <p id="client-greeting-sub">No active project yet. <a href="#contact-section" onclick="showPage('landing')" style="color:#111;font-weight:600">Start a project →</a></p>
-        </div>
-        <!-- PAYMENT STATUS -->
-        <div class="dash-card" style="margin-bottom:20px" id="client-payment-status-card">
-          <div class="dash-card-header"><div class="dash-card-title">Payment Status</div></div>
-          <div style="padding:16px 20px;display:flex;gap:12px;flex-wrap:wrap" id="client-payment-steps">
-            <div class="payment-step payment-step-pending" id="pstep-deposit"><span class="payment-step-num">1</span>Deposit</div>
-            <div class="payment-step-line"></div>
-            <div class="payment-step payment-step-pending" id="pstep-inprogress"><span class="payment-step-num">2</span>In Progress</div>
-            <div class="payment-step-line"></div>
-            <div class="payment-step payment-step-pending" id="pstep-final"><span class="payment-step-num">3</span>Final Payment</div>
-            <div class="payment-step-line"></div>
-            <div class="payment-step payment-step-pending" id="pstep-complete"><span class="payment-step-num">4</span>Complete</div>
-          </div>
-          <!-- BACKEND: Connect to Stripe payment intent status for real-time updates -->
-          <div style="font-size:11px;color:var(--gray-400);padding:0 20px 14px">Stripe integration placeholder — connect to dashboard.stripe.com payment status.</div>
-        </div>
-        <!-- Project card -->
-        <div class="dash-card" style="margin-bottom:20px;cursor:pointer" onclick="showClientPage('project',null)">
-          <div class="dash-card-header">
-            <div class="dash-card-title" id="project-name">Taylor John Images — Web Launch</div>
-            <span class="badge badge-inprogress">In Progress</span>
-          </div>
-          <div style="padding:20px">
-            <div class="stage-track">
-              <div class="stage-item stage-done">
-                <svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Intake
-              </div>
-              <div class="stage-line done"></div>
-              <div class="stage-item stage-done">
-                <svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Structure
-              </div>
-              <div class="stage-line done"></div>
-              <div class="stage-item stage-active">
-                <div style="width:16px;height:16px;border-radius:50%;border:2px solid #111;display:flex;align-items:center;justify-content:center"><div style="width:6px;height:6px;border-radius:50%;background:#111"></div></div>
-                Design
-              </div>
-              <div class="stage-line"></div>
-              <div class="stage-item stage-pending">
-                <div style="width:16px;height:16px;border-radius:50%;border:2px solid #d1d5db"></div>
-                Delivery
-              </div>
-            </div>
-            <div style="margin-top:16px">
-              <div style="display:flex;justify-content:space-between;font-size:12px;color:#9ca3af;margin-bottom:6px"><span>Overall progress</span><span id="progress-text">65% complete</span></div>
-              <div class="prog-track" style="height:5px"><div class="prog-fill" id="progress-bar" style="width:65%"></div></div>
-            </div>
-          </div>
-        </div>
-        <!-- CLIENT CHECKLIST — localStorage prototype -->
-        <!-- BACKEND: Replace localStorage with real database checklist tied to client project ID -->
-        <div class="dash-card" style="margin-bottom:20px">
-          <div class="dash-card-header">
-            <div class="dash-card-title">Project Checklist</div>
-            <span style="font-size:11px;color:var(--gray-400)">Check items off as you complete them</span>
-          </div>
-          <div style="padding:4px 20px 16px" id="client-checklist-items"></div>
-        </div>
-
-        <!-- Recent activity -->
-        <div class="dash-two-col">
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <div class="dash-card-title">Recent Updates</div>
-              <span class="dash-card-action" onclick="showClientPage('messages',null)">View all</span>
-            </div>
-            <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · Lead Designer · 2h ago</div><div class="msg-body">Homepage layout updated with your latest feedback. Mobile nav is now live — please review.</div></div>
-            <div class="msg-item"><div class="msg-head"><strong>You</strong> · 5h ago</div><div class="msg-body">Can we try a lighter background on the work page?</div></div>
-            <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · Lead Designer · 1d ago</div><div class="msg-body">Initial concepts ready. Files uploaded to deliverables.</div></div>
-          </div>
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <div class="dash-card-title">Upcoming Milestones</div>
-            </div>
-            <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Project Kickoff</div></div><div class="tl-date">Apr 1</div></div>
-            <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Structure Approved</div></div><div class="tl-date">Apr 8</div></div>
-            <div class="tl-item"><div class="tl-left"><div class="tl-dot-current"></div><div class="tl-label current">Design v1 Review</div></div><div class="tl-date current">Apr 18</div></div>
-            <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Design v2</div></div><div class="tl-date">Apr 22</div></div>
-            <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Final Delivery</div></div><div class="tl-date">Apr 28</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="client-project" class="proj-detail" style="display:none">
-        <div class="proj-header">
-          <div><div class="proj-h1">Taylor John Images — Web Launch</div><div class="proj-meta">Started Apr 1, 2026 · Lead: Tk</div></div>
-          <span class="badge badge-inprogress" style="font-size:13px;padding:5px 14px">In Progress</span>
-        </div>
-        <div class="stage-bar">
-          <div class="stage-track">
-            <div class="stage-item stage-done"><svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Intake</div>
-            <div class="stage-line done"></div>
-            <div class="stage-item stage-done"><svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Structure</div>
-            <div class="stage-line done"></div>
-            <div class="stage-item stage-active"><div style="width:16px;height:16px;border-radius:50%;border:2px solid #111;display:flex;align-items:center;justify-content:center"><div style="width:6px;height:6px;border-radius:50%;background:#111"></div></div>Design</div>
-            <div class="stage-line"></div>
-            <div class="stage-item stage-pending"><div style="width:16px;height:16px;border-radius:50%;border:2px solid #d1d5db"></div>Delivery</div>
-          </div>
-        </div>
-        <div class="dash-two-col">
-          <div class="deliverables-card">
-            <div class="dash-card-header"><div class="dash-card-title">Deliverables</div><span style="font-size:13px;color:#9ca3af">3 of 6 ready</span></div>
-            <div class="file-row"><div class="file-type">PDF</div><div class="file-name">Brand_Guidelines_v2.pdf</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Homepage_Desktop.html</div><span class="badge badge-review">In Review</span></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Work_Page.html</div><span class="badge badge-progress">In Progress</span></div>
-            <div class="file-row"><div class="file-type">JSON</div><div class="file-name">Style_Tokens.json</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">SVG</div><div class="file-name">Logo_Assets.svg</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Mobile_Brief.html</div><span class="badge badge-review">In Review</span></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div class="updates-card">
-              <div class="dash-card-header"><div class="dash-card-title">Messages</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · 2h ago</div><div class="msg-body">Homepage layout updated. Mobile nav hamburger live — please review.</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>You</strong> · 5h ago</div><div class="msg-body">Can we try a lighter background on the work page?</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · 1d ago</div><div class="msg-body">Initial concepts ready for review. Files in deliverables above.</div></div>
-              <div class="msg-input-wrap"><div id="chat-history"></div>
-<input class="msg-input" id="message-input" placeholder="Send a message..."/><button class="msg-send" id="message-send-btn" onclick="sendHubMessage()">Send</button></div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-card-header"><div class="dash-card-title">Timeline</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Project Kickoff</div></div><div class="tl-date">Apr 1</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Brief &amp; Intake</div></div><div class="tl-date">Apr 4</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Structure Approved</div></div><div class="tl-date">Apr 8</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-current"></div><div class="tl-label current">Design v1 Review</div></div><div class="tl-date current">Apr 18</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Design v2 Refinement</div></div><div class="tl-date">Apr 22</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Final Delivery</div></div><div class="tl-date">Apr 28</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="client-files" class="dash-content" style="display:none">
-        <div class="dash-greeting"><h1>Files</h1><p>All project deliverables in one place</p></div>
-        <div class="deliverables-card">
-          <div class="dash-card-header"><div class="dash-card-title">All Deliverables</div><span style="font-size:13px;color:#9ca3af">Live from your sheet</span></div>
-          <div id="file-list"></div>
-        </div>
-      </div>
-
-      <div id="client-messages" class="dash-content" style="display:none">
-        <div class="dash-greeting"><h1>Messages</h1><p>Direct line to the studio</p></div>
-        <div class="updates-card" style="max-width:640px">
-          <div id="chat-history"></div>
-          <div class="msg-input-wrap">
-            <input class="msg-input" id="message-input" placeholder="Reply to the studio..."/>
-            <button class="msg-send" id="message-send-btn" type="button" onclick="sendHubMessage()">Send</button>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- POST-DEPOSIT TRANSPARENCY — shown in client portal only, not public homepage -->
-      <div id="client-transparency" class="dash-content" style="display:none">
-        <div class="dash-greeting" style="margin-bottom:32px">
-          <h1>What your payment covers.</h1>
-          <p style="font-size:14px;color:var(--gray-400)">A full breakdown of what's included, how the process works, and what to expect at every step.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:860px">
-          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Payment Structure</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p><strong>Under $750:</strong> 100% upfront may be required.</p><p style="margin-top:8px"><strong>Websites &amp; branding:</strong> 50% deposit to start → 50% before final delivery.</p><p style="margin-top:8px"><strong>Enterprise:</strong> 40% deposit → 30% midpoint → 30% before final delivery.</p><p style="margin-top:8px">Final files and launch happen only after final payment is complete.</p></div></div>
-          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Revisions</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Revision rounds are defined per package and agreed before work begins.</p><p style="margin-top:8px">Revisions outside scope may be charged separately.</p><p style="margin-top:8px">Submit revisions clearly and all at once per round.</p></div></div>
-          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Your Responsibilities</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Provide all required content, images, and text promptly.</p><p style="margin-top:8px">Respond to feedback requests and approvals within a reasonable timeframe.</p><p style="margin-top:8px">Communicate changes or direction shifts as early as possible.</p></div></div>
-          <div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Final Delivery</div></div><div style="padding:16px 20px;font-size:13px;color:var(--gray-600);line-height:1.7"><p>Final files are delivered only after all payments are complete.</p><p style="margin-top:8px">Website launch happens after final payment.</p><p style="margin-top:8px">All deliverables are handed off in organized, labeled formats.</p><p style="margin-top:8px">Post-delivery support may be scoped as a separate project.</p></div></div>
-        </div>
-        <div style="margin-top:16px;font-size:12px;color:var(--gray-400);background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px 16px;max-width:860px">
-          <strong>Affirm Payment Options:</strong> We Design Studio may offer Affirm payment options for eligible projects. Approval, payment terms, and financing decisions are handled by Affirm directly.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: DESIGNER DASHBOARD
-════════════════════════════════════════ -->
-<div id="page-designer-dash" class="page" data-login-root="designer-view">
-  <div class="dash-layout">
-
-    <!-- Sidebar -->
-    <aside class="dash-sidebar">
-      <div class="dash-logo">
-        <img id="ddash-logo" src="" alt="WD" style="width:24px;height:24px;object-fit:contain"/>
-        We Design.
-      </div>
-      <div class="dash-nav-section">Overview</div>
-      <a class="dash-nav-link active" onclick="showDesignerPage('dashboard',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Dashboard
-      </a>
-      <div class="dash-nav-section">Projects</div>
-      <a class="dash-nav-link" onclick="showDesignerPage('projects',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg>
-        Active Projects
-        <span class="dash-nav-badge">3</span>
-      </a>
-      <a class="dash-nav-link" onclick="showDesignerPage('tasks',this)">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Tasks
-      </a>
-      <div class="dash-nav-section">Studio</div>
-      <a class="dash-nav-link" href="#">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
-        Payments
-      </a>
-      <a class="dash-nav-link" href="#">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
-        Briefs
-        <span class="dash-nav-badge">2</span>
-      </a>
-      <div class="dash-user">
-        <div class="dash-avatar">TK</div>
-        <div><div class="dash-user-name">Tk</div><div class="dash-user-role">Lead Designer</div></div>
-      </div>
-    </aside>
-
-    <div class="dash-main">
-      <div class="dash-topbar">
-        <div class="dash-topbar-links">
-          <a href="#" onclick="showPage('landing');return false">← Site</a>
-          <a href="#" onclick="showPage('client-dash');return false">Client View</a>
-        </div>
-        <button class="topnav-cta" style="font-size:12px;padding:7px 16px">Start</button>
-      </div>
-
-      <!-- DESIGNER DASHBOARD -->
-      <div id="designer-dashboard" class="dash-content" style="display:block">
-        <div class="dash-greeting">
-          <h1>Good morning, Tk</h1>
-          <p>You have 2 tasks due today · 3 active projects</p>
-        </div>
-        <div class="stat-row">
-          <div class="stat-card">
-            <div class="stat-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg> Active Projects</div>
-            <div class="stat-val">3</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Tasks Due Today</div>
-            <div class="stat-val">2</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Completed This Week</div>
-            <div class="stat-val">12</div>
-          </div>
-        </div>
-        <div class="dash-two-col">
-          <div class="dash-card">
-            <div class="dash-card-header"><div class="dash-card-title">Assigned Projects</div></div>
-            <div class="proj-row" onclick="showDesignerPage('projects',null)">
-              <div style="flex:1"><div class="proj-name">Taylor John Images</div><div class="proj-sub">Web Launch</div></div>
-              <span class="badge badge-inprogress">In Progress</span>
-              <div class="proj-prog"><div class="prog-track"><div class="prog-fill" style="width:65%"></div></div><div class="prog-pct">65%</div></div>
-            </div>
-            <div class="proj-row">
-              <div style="flex:1"><div class="proj-name">Brand Identity — New Client</div><div class="proj-sub">Brand Foundation</div></div>
-              <span class="badge badge-review">In Review</span>
-              <div class="proj-prog"><div class="prog-track"><div class="prog-fill" style="width:85%"></div></div><div class="prog-pct">85%</div></div>
-            </div>
-            <div class="proj-row">
-              <div style="flex:1"><div class="proj-name">Print Package — Service Co.</div><div class="proj-sub">Business Cards + Flyers</div></div>
-              <span class="badge badge-gray">Intake</span>
-              <div class="proj-prog"><div class="prog-track"><div class="prog-fill" style="width:10%"></div></div><div class="prog-pct">10%</div></div>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div class="dash-card">
-              <div class="dash-card-header"><div class="dash-card-title">Tasks</div></div>
-              <div class="task-item"><div class="task-check"></div><div style="flex:1"><div class="task-text">Finalize homepage hero layout</div><div class="task-meta">Taylor John · <span class="priority-high">High</span></div></div><div class="task-time">Today</div></div>
-              <div class="task-item"><div class="task-check"></div><div style="flex:1"><div class="task-text">Review icon set with client</div><div class="task-meta">Taylor John · <span class="priority-med">Medium</span></div></div><div class="task-time">Tomorrow</div></div>
-              <div class="task-item"><div class="task-check"></div><div style="flex:1"><div class="task-text">Send brand identity concepts</div><div class="task-meta">Brand Foundation · <span class="priority-high">High</span></div></div><div class="task-time">Today</div></div>
-              <div class="task-item"><div class="task-check"></div><div style="flex:1"><div class="task-text">Update color tokens</div><div class="task-meta">Brand Foundation · <span class="priority-low">Low</span></div></div><div class="task-time">Apr 20</div></div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-card-header"><div class="dash-card-title">Upcoming Deadlines</div></div>
-              <div class="deadline-item"><div class="dl-dot done"></div><div class="dl-text">Taylor John — Design Review</div><div class="dl-date">Apr 18</div></div>
-              <div class="deadline-item"><div class="dl-dot pending"></div><div class="dl-text">Brand — Concept Delivery</div><div class="dl-date">Apr 22</div></div>
-              <div class="deadline-item"><div class="dl-dot pending"></div><div class="dl-text">Taylor John — Final Delivery</div><div class="dl-date">Apr 28</div></div>
-              <div class="deadline-item"><div class="dl-dot pending"></div><div class="dl-text">Print — Discovery Complete</div><div class="dl-date">May 1</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DESIGNER PROJECTS -->
-      <div id="designer-projects" class="proj-detail" style="display:none">
-        <div id="all-projects-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px"></div>
-        <div class="proj-header">
-          <div><div class="proj-h1">Taylor John Images — Web Launch</div><div class="proj-meta">Started Apr 1, 2026 · Lead: Tk</div></div>
-          <span class="badge badge-inprogress" style="font-size:13px;padding:5px 14px">In Progress</span>
-        </div>
-        <div class="stage-bar">
-          <div class="stage-track">
-            <div class="stage-item stage-done"><svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Intake</div>
-            <div class="stage-line done"></div>
-            <div class="stage-item stage-done"><svg class="stage-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Structure</div>
-            <div class="stage-line done"></div>
-            <div class="stage-item stage-active"><div style="width:16px;height:16px;border-radius:50%;border:2px solid #111;display:flex;align-items:center;justify-content:center"><div style="width:6px;height:6px;border-radius:50%;background:#111"></div></div>Design</div>
-            <div class="stage-line"></div>
-            <div class="stage-item stage-pending"><div style="width:16px;height:16px;border-radius:50%;border:2px solid #d1d5db"></div>Delivery</div>
-          </div>
-        </div>
-        <div class="dash-two-col">
-          <div class="deliverables-card">
-            <div class="dash-card-header"><div class="dash-card-title">Deliverables</div><button class="topnav-cta" style="font-size:11px;padding:6px 14px">+ Add File</button></div>
-            <div class="file-row"><div class="file-type">PDF</div><div class="file-name">Brand_Guidelines_v2.pdf</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Homepage_Desktop.html</div><span class="badge badge-review">In Review</span></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Work_Page.html</div><span class="badge badge-progress">In Progress</span></div>
-            <div class="file-row"><div class="file-type">JSON</div><div class="file-name">Style_Tokens.json</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">SVG</div><div class="file-name">Logo_Assets.svg</div><span class="badge badge-ready">Ready</span><button class="dl-btn"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg></button></div>
-            <div class="file-row"><div class="file-type">HTML</div><div class="file-name">Mobile_Brief.html</div><span class="badge badge-review">In Review</span></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div class="updates-card">
-              <div class="dash-card-header"><div class="dash-card-title">Updates</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · Lead Designer · 2h ago</div><div class="msg-body">Homepage layout updated. Mobile nav live.</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>Client</strong> · 5h ago</div><div class="msg-body">Can we try a lighter background on the work page?</div></div>
-              <div class="msg-item"><div class="msg-head"><strong>Tk</strong> · 1d ago</div><div class="msg-body">Initial concepts ready. Files uploaded.</div></div>
-              <div class="msg-input-wrap"><input class="msg-input" placeholder="Post an update..."/><button class="msg-send">Post</button></div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-card-header"><div class="dash-card-title">Timeline</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Project Kickoff</div></div><div class="tl-date">Apr 1</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-done"></div><div class="tl-label">Structure Approved</div></div><div class="tl-date">Apr 8</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-current"></div><div class="tl-label current">Design v1 Review</div></div><div class="tl-date current">Apr 18</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Design v2 Refinement</div></div><div class="tl-date">Apr 22</div></div>
-              <div class="tl-item"><div class="tl-left"><div class="tl-dot-pending"></div><div class="tl-label pending">Final Delivery</div></div><div class="tl-date">Apr 28</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DESIGNER TASKS -->
-      <div id="designer-tasks" class="dash-content" style="display:none">
-        <div class="dash-greeting" style="display:flex;align-items:flex-start;justify-content:space-between">
-          <div><h1>Tasks</h1><p>2 due today across 3 projects</p></div>
-          <button class="topnav-cta" style="font-size:12px;padding:8px 18px">+ Add Task</button>
-        </div>
-        <div class="dash-card" style="max-width:700px">
-          <div class="tasks-section-label">Due Today</div>
-          <div class="task-item"><input type="checkbox" style="margin-top:2px;flex-shrink:0;cursor:pointer"/><div style="flex:1;margin-left:10px"><div class="task-text">Finalize homepage hero layout</div><div class="task-meta">Taylor John Images</div></div><span class="priority-high">High</span></div>
-          <div class="task-item"><input type="checkbox" style="margin-top:2px;flex-shrink:0;cursor:pointer"/><div style="flex:1;margin-left:10px"><div class="task-text">Send brand identity concepts</div><div class="task-meta">Brand Foundation</div></div><span class="priority-high">High</span></div>
-          <div class="tasks-section-label">Upcoming</div>
-          <div class="task-item"><input type="checkbox" style="margin-top:2px;flex-shrink:0;cursor:pointer"/><div style="flex:1;margin-left:10px"><div class="task-text">Review icon set with client</div><div class="task-meta">Taylor John Images</div></div><span class="priority-med">Medium</span><span style="font-size:12px;color:#9ca3af;margin-left:12px">Tomorrow</span></div>
-          <div class="task-item"><input type="checkbox" style="margin-top:2px;flex-shrink:0;cursor:pointer"/><div style="flex:1;margin-left:10px"><div class="task-text">Update color tokens</div><div class="task-meta">Brand Foundation</div></div><span class="priority-low">Low</span><span style="font-size:12px;color:#9ca3af;margin-left:12px">Apr 20</span></div>
-          <div class="task-item"><input type="checkbox" style="margin-top:2px;flex-shrink:0;cursor:pointer"/><div style="flex:1;margin-left:10px"><div class="task-text">Prepare print files for delivery</div><div class="task-meta">Print Package</div></div><span class="priority-med">Medium</span><span style="font-size:12px;color:#9ca3af;margin-left:12px">Apr 22</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>
 
 <!-- ENTERPRISE QUOTE MODAL -->
@@ -2663,10 +2343,7 @@ const IMGS = {
       <div class="enterprise-form-divider"></div>
       <div class="enterprise-form-label">Tell us about your project</div>
       <!-- Enterprise form uses Web3Forms. Replace YOUR_ACCESS_KEY_HERE with key from web3forms.com -->
-      <form id="enterprise-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleEnterpriseSubmit(event)">
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"/>
-        <input type="hidden" name="subject" value="Enterprise Quote Request — We Design Studio"/>
-        <input type="hidden" name="from_name" value="We Design Studio — Enterprise Form"/>
+      <form id="enterprise-form" onsubmit="handleEnterpriseSubmit(event)">
         <input type="checkbox" name="botcheck" style="display:none"/>
 
         <div class="enterprise-form-row">
@@ -2734,187 +2411,6 @@ const IMGS = {
       <button onclick="closeEnterpriseModal()" class="enterprise-modal-btn-secondary" style="margin-top:24px;font-family:inherit">Close</button>
     </div>
 
-  </div>
-</div>
-
-<!-- CLIENT LOGIN MODAL -->
-<div class="modal-overlay" id="login-modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLoginModal()">✕</button>
-    <div class="modal-title">Client Login</div>
-    <div class="modal-sub">Enter the email address associated with your project to access your dashboard.</div>
-    <input class="modal-input" type="email" id="modal-email-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doModalLogin()"/>
-    <button class="modal-btn" onclick="doModalLogin()">Access My Dashboard</button>
-    <div class="modal-note">Not a client yet? <a href="#contact-section" onclick="closeLoginModal()" style="color:var(--ink);font-weight:600">Start a project →</a></div>
-  </div>
-</div>
-
-<!-- ADMIN PORTAL PAGE -->
-<div id="page-admin" class="page" data-login-root="admin-portal">
-  <!-- ADMIN LOGIN SCREEN -->
-  <div class="admin-login-screen" id="admin-login-screen">
-    <div class="admin-login-box">
-      <img id="admin-logo" src="assets/logo.svg" style="width:40px;height:40px;object-fit:contain;margin:0 auto 16px"/>
-      <h2>Admin Portal</h2>
-      <p>CEO / Creative Director login</p>
-      <input class="modal-input" type="email" id="admin-email-input" placeholder="hello@wedesignsstudio.com" style="margin-bottom:10px"/>
-      <input class="modal-input" type="password" id="admin-pass-input" placeholder="Password" style="margin-bottom:12px"/>
-      <button class="modal-btn" onclick="adminLogin()">Sign In</button>
-      <!-- REPLACE THIS MOCK LOGIN WITH REAL AUTHENTICATION BEFORE LAUNCH -->
-      <div class="admin-login-mock-note">Credentials validated server-side on Vercel. Set ADMIN_EMAIL + ADMIN_PASSWORD env vars.</div>
-      <button style="margin-top:16px;font-size:12px;color:var(--gray-400);background:none;border:none;cursor:pointer" onclick="showPage('landing')">← Back to site</button>
-    </div>
-  </div>
-  <!-- ADMIN DASHBOARD -->
-  <div class="admin-layout" id="admin-dashboard" style="display:none">
-    <aside class="admin-sidebar">
-      <div class="admin-logo"><img src="assets/logo.svg" style="width:22px;height:22px;object-fit:contain"/>We Design</div>
-      <div class="admin-role-badge">CEO / Creative Director</div>
-      <div class="admin-nav-link active" onclick="showAdminPanel('overview',this)">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
-        Overview
-      </div>
-      <div class="admin-nav-link" onclick="showAdminPanel('inquiries',this)">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        Client Inquiries
-      </div>
-      <div class="admin-nav-link" onclick="showAdminPanel('designers',this)">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
-        Designer Applications
-      </div>
-      <div class="admin-nav-link" onclick="showAdminPanel('team',this)">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-        Team Management
-      </div>
-      <div class="admin-nav-link" onclick="showAdminPanel('pricing',this)">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"/></svg>
-        Pricing Overview
-      </div>
-      <div style="margin-top:auto;padding-top:16px;border-top:1px solid var(--gray-100)">
-        <div class="admin-nav-link" onclick="showPage('landing')">← Back to Site</div>
-      </div>
-    </aside>
-    <div class="admin-main">
-      <div class="admin-topbar">
-        <h1>CEO / Creative Director Dashboard</h1>
-        <div style="font-size:12px;color:var(--gray-400)">Logged in as <strong>hello@wedesignsstudio.com</strong></div>
-      </div>
-      <div class="admin-panels">
-
-        <!-- OVERVIEW -->
-        <div id="admin-panel-overview" class="admin-active">
-          <div class="admin-stats" id="admin-stats-row">
-            <div class="admin-stat"><div class="admin-stat-val" id="stat-inquiries">0</div><div class="admin-stat-label">Client Inquiries</div></div>
-            <div class="admin-stat"><div class="admin-stat-val" id="stat-designers">0</div><div class="admin-stat-label">Designer Applications</div></div>
-            <div class="admin-stat"><div class="admin-stat-val" id="stat-team">0</div><div class="admin-stat-label">Team Members</div></div>
-            <div class="admin-stat"><div class="admin-stat-val" id="stat-affirm">0</div><div class="admin-stat-label">Affirm Interest</div></div>
-          </div>
-          <div class="dash-card" style="margin-bottom:20px">
-            <div class="dash-card-header"><div class="dash-card-title">Package Pricing Overview</div></div>
-            <table class="admin-table">
-              <thead><tr><th>Package</th><th>Minimum</th><th>Notes</th></tr></thead>
-              <tbody>
-                <tr><td>Landing Page</td><td>$750</td><td>Starting price — scope may increase</td></tr>
-                <tr><td>Full Website</td><td>$2,500</td><td>Multi-page, mobile-first</td></tr>
-                <tr><td>Brand Kit</td><td>$750</td><td>Logo, colors, typography</td></tr>
-                <tr><td>Flyer / Card Bundle</td><td>$300</td><td>Print-ready files included</td></tr>
-                <tr><td>Business Presence Kit</td><td>$2,500</td><td>Website + brand + promo</td></tr>
-                <tr><td>Enterprise Build</td><td>$5,000</td><td>Custom scope-based quote</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div style="font-size:12px;color:var(--gray-400);padding:12px;background:#f9fafb;border-radius:8px;border:1px dashed #e5e7eb">
-            Admin portal is a localStorage prototype. Connect a real backend (Supabase, Firebase, or custom API) before production launch. See code comments for integration points.
-          </div>
-        </div>
-
-        <!-- INQUIRIES -->
-        <div id="admin-panel-inquiries">
-          <div class="admin-section-title">Client Inquiries</div>
-          <div id="admin-inquiries-empty" style="font-size:14px;color:var(--gray-400);padding:24px 0">No inquiries yet. Inquiries submitted through the contact form will appear here.</div>
-          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
-            <button onclick="adminClearInquiries()" style="font-size:12px;color:#ef4444;background:none;border:1px solid #fca5a5;border-radius:6px;padding:5px 12px;cursor:pointer">Clear All</button>
-            <span style="font-size:12px;color:#9ca3af;margin:auto 0">Prototype: data stored in browser localStorage. <!-- BACKEND: replace localStorage with Supabase/Firebase API calls --></span>
-          </div>
-          <div style="overflow-x:auto">
-          <table class="admin-table" id="admin-inquiries-table" style="display:none;min-width:900px">
-            <thead><tr><th>Name</th><th>Email</th><th>Business</th><th>Service</th><th>Budget</th><th>Affirm?</th><th>Status</th><th>Date</th><th>Note</th></tr></thead>
-            <tbody id="admin-inquiries-body"></tbody>
-          </table>
-          </div>
-        </div>
-
-        <!-- DESIGNER APPLICATIONS -->
-        <div id="admin-panel-designers">
-          <div class="admin-section-title">Designer Applications</div>
-          <!-- HIRE DESIGNERS -->
-          <div id="admin-designers-empty" style="font-size:14px;color:var(--gray-400);padding:24px 0">No applications yet. Designer applications will appear here for review.</div>
-          <table class="admin-table" id="admin-designers-table" style="display:none">
-            <thead><tr><th>Name</th><th>Level</th><th>Services</th><th>Portfolio</th><th>Status</th><th>Contract</th><th>Team</th><th>Actions</th></tr></thead>
-            <tbody id="admin-designers-body"></tbody>
-          </table>
-        </div>
-
-        <!-- TEAM MANAGEMENT -->
-        <div id="admin-panel-team">
-          <div class="admin-section-title">Team Management</div>
-          <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:24px;margin-bottom:20px">
-            <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:16px">Add Team Member</div>
-            <div class="admin-form-row">
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Name</label><input class="admin-input" id="tm-name" placeholder="Full name"/></div>
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Email</label><input class="admin-input" id="tm-email" placeholder="designer@email.com"/></div>
-            </div>
-            <div class="admin-form-row">
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Role</label><input class="admin-input" id="tm-role" placeholder="Web Designer, Brand Designer..."/></div>
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Level</label>
-                <select class="admin-select" id="tm-level">
-                  <option value="Junior">Junior</option>
-                  <option value="Mid">Mid-Level</option>
-                  <option value="Senior">Senior</option>
-                </select>
-              </div>
-            </div>
-            <div class="admin-form-row">
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Team</label>
-                <select class="admin-select" id="tm-team">
-                  <option value="Red">Red Team</option>
-                  <option value="Teal">Teal Team</option>
-                  <option value="Grey">Grey Team</option>
-                </select>
-              </div>
-              <div><label style="font-size:11px;font-weight:700;color:var(--gray-500);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">Specialty</label><input class="admin-input" id="tm-specialty" placeholder="Web design, Brand identity..."/></div>
-            </div>
-            <button class="admin-btn" onclick="adminAddTeamMember()">Add Member</button>
-          </div>
-          <table class="admin-table" id="admin-team-table">
-            <thead><tr><th>Name</th><th>Role</th><th>Level</th><th>Team</th><th>Specialty</th><th>Status</th><th>Actions</th></tr></thead>
-            <tbody id="admin-team-body"><tr><td colspan="7" style="text-align:center;color:var(--gray-400);padding:24px;font-size:13px">No team members yet. Add one above.</td></tr></tbody>
-          </table>
-          <!-- localStorage prototype note -->
-          <!-- BACKEND INTEGRATION: Replace localStorage with real database (Supabase, Firebase, etc.) -->
-        </div>
-
-        <!-- PRICING OVERVIEW -->
-        <div id="admin-panel-pricing">
-          <div class="admin-section-title">Pricing &amp; Affirm Overview</div>
-          <table class="admin-table">
-            <thead><tr><th>Package</th><th>Starting Price</th><th>Payment Structure</th><th>Affirm Available</th></tr></thead>
-            <tbody>
-              <tr><td>Landing Page</td><td>$750 min</td><td>100% upfront or 50/50</td><td><span class="affirm-badge">Yes</span></td></tr>
-              <tr><td>Full Website</td><td>$2,500 min</td><td>50% deposit / 50% before launch</td><td><span class="affirm-badge">Yes</span></td></tr>
-              <tr><td>Brand Kit</td><td>$750 min</td><td>100% upfront or 50/50</td><td><span class="affirm-badge">Yes</span></td></tr>
-              <tr><td>Flyer / Card Bundle</td><td>$300 min</td><td>100% upfront</td><td><span class="affirm-badge">Ask</span></td></tr>
-              <tr><td>Business Presence Kit</td><td>$2,500 min</td><td>50% deposit / 50% before launch</td><td><span class="affirm-badge">Yes</span></td></tr>
-              <tr><td>Enterprise Build</td><td>$5,000 min</td><td>40% / 30% / 30% milestones</td><td><span class="affirm-badge">Yes</span></td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:16px;font-size:13px;color:var(--gray-400);line-height:1.6;padding:14px;background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px">
-            Affirm integration note: Payment plan language is live on the site. To activate real Affirm checkout, integrate the official Affirm.js SDK with your merchant credentials. Do not guarantee approval or monthly amounts without official integration.
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
 </div>
 
@@ -3004,9 +2500,8 @@ async function handleContactSubmit(e) {
 
 // Inject images after DOM loads — uses real asset files from /assets/
 document.addEventListener('DOMContentLoaded', () => {
-  ensureAliasIds();
   // Logo — real SVG asset
-  document.querySelectorAll('#nav-logo, #cdash-logo, #ddash-logo').forEach(el => {
+  document.querySelectorAll('#nav-logo').forEach(el => {
     el.src = 'assets/logo.svg';
     el.style.width = '28px';
     el.style.height = '28px';
@@ -3021,409 +2516,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (c2) { c2.src = 'assets/card-2.png'; c2.style.objectFit = 'cover'; }
   if (c3) { c3.src = 'assets/card-1.png'; c3.style.objectFit = 'cover'; }
 });
-
-// ── PAGE ROUTING ──
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  window.scrollTo(0, 0);
-}
-
-// ── CLIENT PORTAL ROUTING ──
-function showClientPage(id, el) {
-  document.querySelectorAll('#page-client-dash .dash-content, #page-client-dash .proj-detail').forEach(p => {
-    p.style.display = 'none';
-  });
-  const target = document.getElementById('client-' + id);
-  if (target) target.style.display = 'block';
-  document.querySelectorAll('#page-client-dash .dash-nav-link').forEach(l => l.classList.remove('active'));
-  if (el) el.classList.add('active');
-}
-
-// ── CLIENT CHECKLIST (localStorage prototype) ──
-// BACKEND: Replace with real project checklist tied to client project ID
-const CLIENT_CHECKLIST_ITEMS = [
-  'Submit business details',
-  'Submit logo / brand assets',
-  'Approve homepage direction',
-  'Review website draft',
-  'Submit revisions',
-  'Final approval',
-  'Final payment',
-  'Launch / handoff',
-];
-
-function clientLoadChecklist() {
-  const el = document.getElementById('client-checklist-items');
-  if (!el) return;
-  const saved = JSON.parse(localStorage.getItem('wd_client_checklist') || '{}');
-  el.innerHTML = CLIENT_CHECKLIST_ITEMS.map((item, i) => {
-    const checked = saved[i] || false;
-    return `<label style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;font-size:14px;color:${checked?'#9ca3af':'#111'}">
-      <input type="checkbox" ${checked?'checked':''} onchange="clientToggleChecklist(${i},this.checked)" style="width:16px;height:16px;accent-color:#111;cursor:pointer"/>
-      <span style="${checked?'text-decoration:line-through':''}">${item}</span>
-    </label>`;
-  }).join('');
-}
-
-function clientToggleChecklist(i, checked) {
-  const saved = JSON.parse(localStorage.getItem('wd_client_checklist') || '{}');
-  saved[i] = checked;
-  localStorage.setItem('wd_client_checklist', JSON.stringify(saved));
-  clientLoadChecklist();
-}
-
-// Init client portal on load
-document.addEventListener('DOMContentLoaded', () => {
-  clientLoadChecklist();
-});
-
-// ── CLIENT SUBPAGES ──
-function showClientPage(id, link) {
-  ['overview','project','files','messages'].forEach(p => {
-    const el = document.getElementById('client-' + p);
-    if (el) el.style.display = 'none';
-  });
-  const target = document.getElementById('client-' + id);
-  if (target) target.style.display = 'block';
-
-  document.querySelectorAll('#page-client-dash .dash-nav-link').forEach(l => l.classList.remove('active'));
-  if (link) link.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-// ── DESIGNER SUBPAGES ──
-function showDesignerPage(id, link) {
-  ['dashboard','projects','tasks'].forEach(p => {
-    const el = document.getElementById('designer-' + p);
-    if (el) el.style.display = 'none';
-  });
-  const target = document.getElementById('designer-' + id);
-  if (target) target.style.display = 'block';
-
-  document.querySelectorAll('#page-designer-dash .dash-nav-link').forEach(l => l.classList.remove('active'));
-  if (link) link.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-// YOUR NEW MASTER API URL
-const API_URL = 'https://script.google.com/macros/s/AKfycbwxNOd_6jVolW0FfQoY0dDolPKJ_hNvwZXindFhowSLmfEYjIpAXjbPsOzeq_LpHs3z/exec';
-
-
-function ensureAliasIds() {
-  const aliases = {
-    'landing-page': 'page-landing',
-    'client-dashboard': 'page-client-dash',
-    'designer-view': 'page-designer-dash'
-  };
-  Object.entries(aliases).forEach(([alias, sourceId]) => {
-    if (!document.getElementById(alias)) {
-      const source = document.getElementById(sourceId);
-      if (source) source.id = alias;
-    }
-  });
-}
-
-function getEl(...ids) {
-  for (const id of ids) {
-    const el = document.getElementById(id);
-    if (el) return el;
-  }
-  return null;
-}
-
-function showClientDashboardView() {
-  const landing = getEl('landing-page', 'page-landing');
-  const clientDash = getEl('client-dashboard', 'page-client-dash');
-
-  if (landing) landing.style.display = 'none';
-  if (clientDash) {
-    clientDash.style.display = 'block';
-    clientDash.classList.add('active');
-  }
-
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const actualDashPage = document.getElementById('page-client-dash');
-  if (actualDashPage) actualDashPage.classList.add('active');
-}
-
-function renderDashboardData(data) {
-  const project = data.project || data;
-  const projectName = project.name || project.project_name || 'Untitled Project';
-  const rawProgress = Number(project.progress ?? 0);
-  const progress = Number.isFinite(rawProgress) ? Math.max(0, Math.min(100, rawProgress)) : 0;
-
-  const projectNameDisplay = getEl('project-name-display', 'project-name');
-  const progressBar = getEl('progress-bar');
-  const progressText = getEl('progress-text');
-  const projectDetailHeading = document.querySelector('#client-project .proj-h1');
-
-  if (projectNameDisplay) projectNameDisplay.innerText = projectName;
-  if (projectDetailHeading) projectDetailHeading.innerText = projectName;
-  if (progressBar) progressBar.style.width = progress + '%';
-  if (progressText) progressText.innerText = `${progress}% complete`;
-
-  if (project.id) {
-    window.PROJECT_ID = project.id;
-    localStorage.setItem('projectId', project.id);
-  }
-
-  if (project.name) {
-    localStorage.setItem('projectName', project.name);
-  }
-
-  if (Array.isArray(data.messages)) {
-    displayMessages(data.messages);
-  }
-
-  if (Array.isArray(data.files)) {
-    displayFiles(data.files);
-  }
-}
-
-function renderClientDashboard(data) {
-  const email = (data.project && data.project.email) || window.CLIENT_EMAIL || localStorage.getItem('clientEmail') || '';
-  if (email) {
-    localStorage.setItem('clientEmail', email);
-    window.CLIENT_EMAIL = email;
-  }
-  renderDashboardData(data);
-  showClientDashboardView();
-}
-
-function renderDesignerDashboard(projects) {
-  const designerView = getEl('designer-view', 'page-designer-dash');
-  const projectListCustom = getEl('all-projects-list');
-
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('active');
-    p.style.display = 'none';
-  });
-
-  if (designerView) {
-    designerView.style.display = 'block';
-    designerView.classList.add('active');
-  }
-
-  const dashMain = getEl('designer-dashboard');
-  const projectsPanel = getEl('designer-projects');
-  const tasksPanel = getEl('designer-tasks');
-  if (dashMain) dashMain.style.display = 'none';
-  if (tasksPanel) tasksPanel.style.display = 'none';
-  if (projectsPanel) projectsPanel.style.display = 'block';
-
-  if (projectListCustom) {
-    projectListCustom.innerHTML = (projects || []).map(p => `
-      <div class="dash-card" style="padding:20px">
-        <h3 style="font-size:18px;margin-bottom:8px">${p.name || 'Untitled Project'}</h3>
-        <p style="font-size:13px;color:#6b7280;margin-bottom:8px">Client: ${p.email || '—'}</p>
-        <div class="badge badge-inprogress" style="display:inline-flex;margin-bottom:10px">${p.status || 'In Progress'}</div>
-        <p style="font-size:13px;color:#374151;margin-bottom:14px">Progress: ${Number(p.progress || 0)}%</p>
-        <button class="topnav-cta" type="button" onclick="viewClientProject('${String(p.email || '').replace(/'/g, "&#39;")}')">Manage</button>
-      </div>
-    `).join('') || '<p>No projects found.</p>';
-  }
-
-  window.DESIGNER_PROJECTS = projects || [];
-}
-
-function viewClientProject(email) {
-  if (!email) return;
-  const match = (window.DESIGNER_PROJECTS || []).find(p => String(p.email || '').toLowerCase() === String(email).toLowerCase());
-  if (!match) return;
-  renderDashboardData({ project: match, messages: match.messages || [], files: match.files || [] });
-  showDesignerPage('projects');
-}
-
-async function loadDashboard(clientEmail) {
-  if (!clientEmail) return;
-
-  try {
-    const response = await fetch(`${API_URL}?action=getProject&email=${encodeURIComponent(clientEmail)}`);
-    if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-    const data = await response.json();
-
-    if (data.error) {
-      console.error('Dashboard error:', data.error);
-      return;
-    }
-
-    renderDashboardData(data);
-  } catch (error) {
-    console.error('Dashboard failed to load', error);
-  }
-}
-
-async function handleLogin() {
-  const emailField = getEl('email-field');
-  const emailInput = emailField ? emailField.value.trim().toLowerCase() : '';
-
-  if (!emailInput) {
-    alert('Enter your email first.');
-    return;
-  }
-
-  try {
-    const response = await fetch(`${API_URL}?action=getDashboard&email=${encodeURIComponent(emailInput)}`);
-    if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-
-    let data = await response.json();
-
-    if (data.error && String(data.error).toLowerCase().includes('invalid action')) {
-      const fallbackResponse = await fetch(`${API_URL}?action=getProject&email=${encodeURIComponent(emailInput)}`);
-      if (!fallbackResponse.ok) throw new Error(`Fallback request failed with status ${fallbackResponse.status}`);
-      const fallbackData = await fallbackResponse.json();
-      if (fallbackData.error) {
-        alert("We couldn't find that email. Try test@gmail.com!");
-        return;
-      }
-      data = { role: 'client', project: fallbackData, messages: [], files: [] };
-    } else if (data.error) {
-      alert(data.error || 'Access Denied.');
-      return;
-    }
-
-    if (data.role === 'designer') {
-      renderDesignerDashboard(Array.isArray(data.projects) ? data.projects : []);
-    } else if (data.role === 'client' || data.project) {
-      renderClientDashboard(data);
-    } else {
-      alert('Access Denied.');
-    }
-  } catch (error) {
-    console.error('Login failed', error);
-    alert('Login failed. Check your Apps Script deployment and sheet data.');
-  }
-}
-
-async function sendMessage() {
-  const messageInput = document.getElementById('message-input');
-  if (!messageInput) return;
-
-  const messageText = messageInput.value.trim();
-  if (!messageText) return;
-
-  const payload = {
-    action: 'sendMessage',
-    sender: window.CLIENT_NAME || localStorage.getItem('clientName') || 'Client Name',
-    text: messageText,
-    projectId: window.PROJECT_ID || localStorage.getItem('projectId') || '123'
-  };
-
-  try {
-    await fetch(API_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(payload)
-    });
-
-    messageInput.value = '';
-  } catch (error) {
-    console.error('Message failed to send', error);
-  }
-}
-
-
-
-
-function displayFiles(files) {
-    const fileContainer = document.getElementById('file-list');
-    if (!fileContainer) return;
-    fileContainer.innerHTML = '';
-
-    if (!files || files.length === 0) {
-        fileContainer.innerHTML = '<p>No files uploaded yet.</p>';
-        return;
-    }
-
-    files.forEach(file => {
-        const fileRow = document.createElement('div');
-        fileRow.className = 'file-item';
-
-        fileRow.innerHTML = `
-            <div class="file-info">
-                <span class="file-icon">${getFileIcon(file.type || '')}</span>
-                <span class="file-name">${file.filename || file.fileName || file.FileName || 'Untitled file'}</span>
-            </div>
-            <a href="${file.url || '#'}" target="_blank" class="download-btn">Download</a>
-        `;
-
-        fileContainer.appendChild(fileRow);
-    });
-}
-
-function getFileIcon(type) {
-    const normalizedType = String(type || '').toUpperCase();
-    if (normalizedType === 'PDF') return '📄';
-    if (normalizedType === 'FIG') return '🎨';
-    return '📁';
-}
-
-function displayMessages(messages) {
-    const chatContainer = document.getElementById('chat-history');
-    if (!chatContainer) return;
-    chatContainer.innerHTML = '';
-
-    (messages || []).forEach(msg => {
-        const messageDiv = document.createElement('div');
-        const sender = msg.sender || 'Studio';
-        const body = msg.text || msg.body || '';
-        const stamp = msg.timestamp ? new Date(msg.timestamp) : new Date();
-        const isDesigner = sender === 'Tk' || sender === 'Designer' || sender === 'Studio';
-
-        messageDiv.className = isDesigner ? 'msg-designer' : 'msg-client';
-        messageDiv.innerHTML = `
-            <p><strong>${sender}:</strong> ${body}</p>
-            <small>${isNaN(stamp.getTime()) ? '' : stamp.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})}</small>
-        `;
-
-        chatContainer.appendChild(messageDiv);
-    });
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-async function sendHubMessage() {
-  const messageInputEl = document.getElementById('message-input');
-  const messageText = messageInputEl ? messageInputEl.value.trim() : '';
-  const projectId = String(window.CURRENT_PROJECT_ID || '101');
-  const senderName = String(window.CURRENT_SENDER_NAME || 'Client');
-
-  if (!messageText) return;
-
-  const payload = {
-    action: 'sendMessage',
-    sender: senderName,
-    text: messageText,
-    projectId: projectId
-  };
-
-  try {
-    await fetch(API_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    const chatContainer = document.getElementById('chat-history');
-    if (chatContainer) {
-      const tempMsg = document.createElement('div');
-      tempMsg.className = 'msg-client';
-      tempMsg.innerHTML = `<p><strong>You:</strong> ${messageText}</p><small>Just now</small>`;
-      chatContainer.appendChild(tempMsg);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    if (messageInputEl) messageInputEl.value = '';
-  } catch (error) {
-    console.error('Error sending message:', error);
-  }
-}
-
-window.loadDashboard = loadDashboard;
-
-// ══════════════════════════════════════════════
 
 // ── ENTERPRISE MODAL ──────────────────────────────────────────────────────────
 function openEnterpriseModal() {
@@ -3489,341 +2581,8 @@ async function handleEnterpriseSubmit(e) {
   }
 }
 
-// ── STRIPE PAYMENT LINKS ──────────────────────────────────────────────────────
-// Replace placeholder URLs with live Stripe Payment Links from dashboard.stripe.com
-const STRIPE_LINKS = {
-  landingPage:          'https://buy.stripe.com/REPLACE_LANDING_PAGE',
-  fullWebsite:          'https://buy.stripe.com/REPLACE_FULL_WEBSITE',
-  brandKit:             'https://buy.stripe.com/REPLACE_BRAND_KIT',
-  flyerCardBundle:      'https://buy.stripe.com/REPLACE_FLYER_BUNDLE',
-  businessPresenceKit:  'https://buy.stripe.com/REPLACE_PRESENCE_KIT',
-  swiftMVP:             'https://buy.stripe.com/REPLACE_SWIFT_MVP',
-};
-async function goToCheckout(pkg) {
-  const btn = document.activeElement;
-  const origText = btn ? btn.textContent : '';
-  if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
-  try {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ package: pkg }),
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      if (btn) { btn.disabled = false; btn.textContent = origText; }
-      // Stripe not configured yet — fall back to inquiry form
-      document.querySelector('#contact-section').scrollIntoView({ behavior: 'smooth' });
-    }
-  } catch {
-    if (btn) { btn.disabled = false; btn.textContent = origText; }
-    document.querySelector('#contact-section').scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-// CLIENT LOGIN MODAL
-// ══════════════════════════════════════════════
-function openLoginModal() {
-  document.getElementById('login-modal').classList.add('open');
-  setTimeout(() => { const el = document.getElementById('modal-email-input'); if(el) el.focus(); }, 100);
-}
-function closeLoginModal() {
-  document.getElementById('login-modal').classList.remove('open');
-}
-document.addEventListener('DOMContentLoaded', () => {
-  const overlay = document.getElementById('login-modal');
-  if (overlay) overlay.addEventListener('click', e => { if(e.target === overlay) closeLoginModal(); });
-});
-async function doModalLogin() {
-  const emailInput = document.getElementById('modal-email-input');
-  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
-  if (!email) { alert('Enter your email first.'); return; }
-  closeLoginModal();
-  // Reuse existing handleLogin logic by setting the email field
-  window.CLIENT_EMAIL = email;
-  try {
-    const response = await fetch(`${API_URL}?action=getDashboard&email=${encodeURIComponent(email)}`);
-    if (!response.ok) throw new Error('Request failed');
-    let data = await response.json();
-    if (data.error && String(data.error).toLowerCase().includes('invalid action')) {
-      const fb = await fetch(`${API_URL}?action=getProject&email=${encodeURIComponent(email)}`);
-      const fbData = await fb.json();
-      if (fbData.error) { alert("We couldn't find that email. Please contact hello@wedesignsstudio.com"); return; }
-      data = { role: 'client', project: fbData, messages: [], files: [] };
-    } else if (data.error) { alert(data.error || 'Access Denied.'); return; }
-    if (data.role === 'designer') { renderDesignerDashboard(Array.isArray(data.projects) ? data.projects : []); }
-    else if (data.role === 'client' || data.project) { renderClientDashboard(data); }
-    else { alert('Access Denied.'); }
-  } catch(err) { alert('Login failed. Please contact hello@wedesignsstudio.com'); }
-}
-
-// ══════════════════════════════════════════════
-// ADMIN PORTAL
-// ══════════════════════════════════════════════
-// Admin login — credentials validated server-side via /api/admin-auth
-// Credentials are never exposed in source code when deployed on Vercel.
-// Prototype fallback: if API unavailable (local dev), falls back to local check with console warning.
-// IMPORTANT: Remove or disable prototype fallback before sharing source publicly.
-const _ADMIN_FALLBACK_PASS = 'wedesign2026'; // dev-only fallback, checked after API fails
-
-function showAdminDashboard() {
-  document.getElementById('admin-login-screen').style.display = 'none';
-  document.getElementById('admin-dashboard').style.display = 'flex';
-  adminLoadAll();
-}
-
-async function adminLogin() {
-  const email = (document.getElementById('admin-email-input').value || '').trim().toLowerCase();
-  const pass = document.getElementById('admin-pass-input').value || '';
-  const btn = document.querySelector('.admin-login-box .modal-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Signing in…'; }
-
-  try {
-    const res = await fetch('/api/admin-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pass }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      sessionStorage.setItem('wd_admin_token', data.token || 'ok');
-      sessionStorage.setItem('wd_admin_email', email);
-      showAdminDashboard();
-    } else {
-      if (btn) { btn.disabled = false; btn.textContent = 'Sign In'; }
-      alert(data.error || 'Incorrect credentials.');
-    }
-  } catch (err) {
-    // API not reachable — prototype fallback (local dev only)
-    console.warn('[DEV] /api/admin-auth not reachable. Using dev fallback. Deploy to Vercel for real auth.');
-    if (email === 'hello@wedesignsstudio.com' && pass === _ADMIN_FALLBACK_PASS) {
-      sessionStorage.setItem('wd_admin_token', 'dev-token');
-      sessionStorage.setItem('wd_admin_email', email);
-      showAdminDashboard();
-    } else {
-      if (btn) { btn.disabled = false; btn.textContent = 'Sign In'; }
-      alert('Login failed. On Vercel: set ADMIN_EMAIL and ADMIN_PASSWORD env vars and redeploy.');
-    }
-  }
-}
-
-function showAdminPanel(id, el) {
-  document.querySelectorAll('.admin-panels > div').forEach(p => p.classList.remove('admin-active'));
-  const target = document.getElementById('admin-panel-' + id);
-  if (target) target.classList.add('admin-active');
-  document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
-  if (el) el.classList.add('active');
-}
-
-function adminLoadAll() {
-  adminLoadInquiries();
-  adminLoadDesigners();
-  adminLoadTeam();
-  adminUpdateStats();
-}
-
-// ── INQUIRIES (localStorage prototype) ──
-// BACKEND INTEGRATION: Replace localStorage reads with API calls to your backend (Supabase, Firebase, etc.)
-const INQUIRY_STATUSES = ['New','Reviewed','Quoted','Deposit Sent','Deposit Paid','In Progress','Final Payment Due','Completed','Archived'];
-
-function adminLoadInquiries() {
-  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  const tbody = document.getElementById('admin-inquiries-body');
-  const table = document.getElementById('admin-inquiries-table');
-  const empty = document.getElementById('admin-inquiries-empty');
-  if (!data.length) { if(empty) empty.style.display='block'; if(table) table.style.display='none'; return; }
-  if(empty) empty.style.display='none'; if(table) table.style.display='table';
-  tbody.innerHTML = data.map((r, i) => {
-    const affirm = r.payment_preference && r.payment_preference.toLowerCase().includes('affirm');
-    const statusOpts = INQUIRY_STATUSES.map(s =>
-      `<option value="${s}" ${(r.status||'New')===s?'selected':''}>${s}</option>`
-    ).join('');
-    return `<tr>
-      <td><strong>${r.name||'—'}</strong></td>
-      <td style="font-size:12px"><a href="mailto:${r.email||''}" style="color:inherit">${r.email||'—'}</a></td>
-      <td>${r.business_name||'—'}</td>
-      <td style="font-size:12px">${r.service||'—'}</td>
-      <td style="font-size:12px">${r.budget||'—'}</td>
-      <td>${affirm ? '<span class="affirm-badge">Yes</span>' : '<span style="color:#9ca3af;font-size:12px">No</span>'}</td>
-      <td><select class="admin-select" style="font-size:11px;padding:4px 6px" onchange="adminSetInquiryStatus(${i},this.value)">${statusOpts}</select></td>
-      <td style="font-size:11px;color:var(--gray-400)">${r.date||'—'}</td>
-      <td><input class="admin-input" style="font-size:11px;padding:4px 8px;min-width:140px" placeholder="Add note…" value="${(r.note||'').replace(/"/g,'&quot;')}" onchange="adminSetInquiryNote(${i},this.value)"/></td>
-    </tr>`;
-  }).join('');
-}
-function adminSetInquiryStatus(i, val) {
-  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  if (data[i]) { data[i].status = val; localStorage.setItem('wd_inquiries', JSON.stringify(data)); }
-}
-function adminSetInquiryNote(i, val) {
-  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  if (data[i]) { data[i].note = val; localStorage.setItem('wd_inquiries', JSON.stringify(data)); }
-}
-function adminClearInquiries() {
-  if (!confirm('Clear all inquiries from this browser? This cannot be undone.')) return;
-  localStorage.removeItem('wd_inquiries');
-  adminLoadInquiries();
-  adminUpdateStats();
-}
-
-function adminDeleteInquiry(i) {
-  const data = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  data.splice(i, 1);
-  localStorage.setItem('wd_inquiries', JSON.stringify(data));
-  adminLoadInquiries(); adminUpdateStats();
-}
-
-// ── DESIGNER APPLICATIONS (localStorage) ──
-// BACKEND INTEGRATION: Replace localStorage with real DB calls
-function adminLoadDesigners() {
-  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
-  const tbody = document.getElementById('admin-designers-body');
-  const table = document.getElementById('admin-designers-table');
-  const empty = document.getElementById('admin-designers-empty');
-  if (!data.length) { if(empty) empty.style.display='block'; if(table) table.style.display='none'; return; }
-  if(empty) empty.style.display='none'; if(table) table.style.display='table';
-  tbody.innerHTML = data.map((r, i) => {
-    const statusOpts = ['Pending','Approved','Rejected'].map(s => `<option${r.status===s?' selected':''}>${s}</option>`).join('');
-    const contractOpts = ['Not Sent','Sent','Signed'].map(s => `<option${r.contract===s?' selected':''}>${s}</option>`).join('');
-    const teamOpts = ['—','Red','Teal','Grey'].map(s => `<option${r.team===s?' selected':''}>${s}</option>`).join('');
-    return `<tr>
-      <td>${r.name||'—'}<div style="font-size:11px;color:var(--gray-400)">${r.email||''}</div></td>
-      <td>${r.level||'—'}</td>
-      <td>${r.services||'—'}</td>
-      <td><a href="${r.portfolio||'#'}" target="_blank" style="color:var(--ink);font-size:12px">${r.portfolio ? 'View →' : '—'}</a></td>
-      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'status',this.value)">${statusOpts}</select></td>
-      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'contract',this.value)">${contractOpts}</select></td>
-      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateDesigner(${i},'team',this.value)">${teamOpts}</select></td>
-      <td><button class="admin-action-btn danger" onclick="adminDeleteDesigner(${i})">Remove</button></td>
-    </tr>`;
-  }).join('');
-}
-
-function adminUpdateDesigner(i, field, val) {
-  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
-  if (data[i]) { data[i][field] = val; localStorage.setItem('wd_designer_apps', JSON.stringify(data)); }
-  // If approved + assigned to team, optionally add to team members
-}
-function adminDeleteDesigner(i) {
-  const data = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
-  data.splice(i, 1);
-  localStorage.setItem('wd_designer_apps', JSON.stringify(data));
-  adminLoadDesigners(); adminUpdateStats();
-}
-
-// ── TEAM MANAGEMENT (localStorage) ──
-// BACKEND INTEGRATION: Replace localStorage with real DB calls
-function adminAddTeamMember() {
-  const name = document.getElementById('tm-name').value.trim();
-  const email = document.getElementById('tm-email').value.trim();
-  const role = document.getElementById('tm-role').value.trim();
-  const level = document.getElementById('tm-level').value;
-  const team = document.getElementById('tm-team').value;
-  const specialty = document.getElementById('tm-specialty').value.trim();
-  if (!name || !email) { alert('Name and email are required.'); return; }
-  const members = JSON.parse(localStorage.getItem('wd_team') || '[]');
-  members.push({ name, email, role, level, team, specialty, status: 'Active', date: new Date().toLocaleDateString() });
-  localStorage.setItem('wd_team', JSON.stringify(members));
-  ['tm-name','tm-email','tm-role','tm-specialty'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
-  adminLoadTeam(); adminUpdateStats();
-}
-
-function adminLoadTeam() {
-  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
-  const tbody = document.getElementById('admin-team-body');
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--gray-400);padding:24px;font-size:13px">No team members yet. Add one above.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = data.map((m, i) => {
-    const statusOpts = ['Active','Pending','Inactive'].map(s => `<option${m.status===s?' selected':''}>${s}</option>`).join('');
-    const teamClass = m.team === 'Red' ? 'team-red' : m.team === 'Teal' ? 'team-teal' : 'team-grey';
-    const statusClass = m.status === 'Active' ? 'status-active' : m.status === 'Pending' ? 'status-pending' : 'status-inactive';
-    return `<tr>
-      <td>${m.name}<div style="font-size:11px;color:var(--gray-400)">${m.email}</div></td>
-      <td>${m.role||'—'}</td>
-      <td>${m.level||'—'}</td>
-      <td><span class="team-badge ${teamClass}">${m.team} Team</span></td>
-      <td style="font-size:12px">${m.specialty||'—'}</td>
-      <td><select class="admin-select" style="font-size:11px;padding:4px 8px;width:auto" onchange="adminUpdateTeamMember(${i},'status',this.value)">${statusOpts}</select></td>
-      <td><button class="admin-action-btn danger" onclick="adminRemoveTeamMember(${i})">Remove</button></td>
-    </tr>`;
-  }).join('');
-}
-
-function adminUpdateTeamMember(i, field, val) {
-  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
-  if (data[i]) { data[i][field] = val; localStorage.setItem('wd_team', JSON.stringify(data)); adminLoadTeam(); }
-}
-function adminRemoveTeamMember(i) {
-  const data = JSON.parse(localStorage.getItem('wd_team') || '[]');
-  data.splice(i, 1);
-  localStorage.setItem('wd_team', JSON.stringify(data));
-  adminLoadTeam(); adminUpdateStats();
-}
-
-function adminUpdateStats() {
-  const inquiries = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  const designers = JSON.parse(localStorage.getItem('wd_designer_apps') || '[]');
-  const team = JSON.parse(localStorage.getItem('wd_team') || '[]');
-  const affirmCount = inquiries.filter(r => r.payment_preference && r.payment_preference.toLowerCase().includes('affirm')).length;
-  const setStat = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
-  setStat('stat-inquiries', inquiries.length);
-  setStat('stat-designers', designers.length);
-  setStat('stat-team', team.length);
-  setStat('stat-affirm', affirmCount);
-}
-
-// ── CONTACT FORM: store in localStorage for admin preview ──
-// BACKEND INTEGRATION: Also submit to Web3Forms/EmailJS for actual email delivery
-const _origHandleContactSubmit = window.handleContactSubmit;
-async function handleContactSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contact-form');
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true; btn.textContent = 'Sending...';
-
-  const fd = new FormData(form);
-  const entry = {
-    name: fd.get('name') || '', business_name: fd.get('business_name') || '',
-    email: fd.get('email') || '', phone: fd.get('phone') || '',
-    service: fd.get('service') || '', budget: fd.get('budget') || '',
-    timeline: fd.get('timeline') || '', payment_preference: fd.get('payment_preference') || '',
-    message: fd.get('message') || '',
-    date: new Date().toLocaleDateString()
-  };
-
-  // Store locally for admin portal preview
-  const existing = JSON.parse(localStorage.getItem('wd_inquiries') || '[]');
-  existing.unshift(entry);
-  localStorage.setItem('wd_inquiries', JSON.stringify(existing));
-
-  // BACKEND INTEGRATION: Submit to Web3Forms for email delivery
-  // Replace YOUR_ACCESS_KEY_HERE with key from web3forms.com
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
-    const json = await res.json();
-    if (json.success) {
-      document.getElementById('contact-form-body').innerHTML = '';
-      const success = document.getElementById('contact-success');
-      if (success) success.style.display = 'block';
-    } else {
-      btn.disabled = false; btn.textContent = 'Send Inquiry';
-      alert('Saved locally. To activate email delivery, add a Web3Forms key. Or email hello@wedesignsstudio.com directly.');
-    }
-  } catch {
-    // Even if email fails, local storage worked — show success
-    document.getElementById('contact-form-body').innerHTML = '';
-    const success = document.getElementById('contact-success');
-    if (success) success.style.display = 'block';
-  }
-}
-window.handleContactSubmit = handleContactSubmit;
-
 // ── DESIGNER APPLICATION FORM ──
-// BACKEND INTEGRATION: Add Web3Forms/EmailJS key + DocuSign/PandaDoc contract automation
+
 async function handleDesignerSubmit(e) {
   e.preventDefault();
   const form = document.getElementById('designer-form');
@@ -3850,45 +2609,6 @@ async function handleDesignerSubmit(e) {
   if (success) success.style.display = 'block';
 }
 
-// Admin page route
-function goToAdmin() { showPage('admin'); }
-
-
-window.handleLogin = handleLogin;
-window.sendMessage = sendMessage;
-window.sendHubMessage = sendHubMessage;
-
-document.addEventListener('DOMContentLoaded', () => {
-  ensureAliasIds();
-  const sendBtn = document.getElementById('message-send-btn');
-  if (sendBtn && !sendBtn.dataset.bound) {
-    sendBtn.dataset.bound = 'true';
-    sendBtn.addEventListener('click', sendHubMessage);
-  }
-
-  const loginBtn = getEl('login-btn', 'email-login-btn');
-  if (loginBtn && !loginBtn.dataset.bound) {
-    loginBtn.dataset.bound = 'true';
-    loginBtn.addEventListener('click', handleLogin);
-  }
-
-  const emailField = getEl('email-field');
-  if (emailField && !emailField.dataset.bound) {
-    emailField.dataset.bound = 'true';
-    emailField.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        handleLogin();
-      }
-    });
-  }
-
-  const savedClientEmail = window.CLIENT_EMAIL || localStorage.getItem('clientEmail');
-  if (savedClientEmail) {
-    window.CLIENT_EMAIL = savedClientEmail;
-    loadDashboard(savedClientEmail);
-  }
-});
 
 // ── CARD 3D MOUSE PARALLAX ──
 const heroStack = document.getElementById('heroCardStack');

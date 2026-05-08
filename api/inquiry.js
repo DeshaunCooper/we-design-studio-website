@@ -1,16 +1,9 @@
 // api/inquiry.js
 // Handles all public inquiry types: client contact, enterprise quotes, designer applications.
-// Sends email via Gmail SMTP using Nodemailer.
-//
-// Required env vars (set in Vercel → Project Settings → Environment Variables):
-//   SMTP_HOST          smtp.gmail.com
-//   SMTP_PORT          465
-//   SMTP_SECURE        true
-//   SMTP_USER          hello@wedesignsstudio.com
-//   SMTP_PASS          <Google App Password — from myaccount.google.com/apppasswords>
-//   CONTACT_TO_EMAIL   hello@wedesignsstudio.com
+// Sends email via Gmail SMTP and saves to Supabase inquiries table.
 
 const nodemailer = require('nodemailer');
+const { createClient } = require('@supabase/supabase-js');
 
 function createTransport() {
   return nodemailer.createTransport({
@@ -159,9 +152,36 @@ module.exports = async (req, res) => {
       subject: emailContent.subject,
       html: emailContent.html,
     });
-    return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[api/inquiry] Send error:', err.message);
     return res.status(500).json({ error: 'Failed to send email. Please try again or contact hello@wedesignsstudio.com' });
   }
+
+  // Save to Supabase (non-blocking — email already sent)
+  if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    try {
+      const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+      await db.from('inquiries').insert({
+        inquiry_type: type,
+        name: body.name || null,
+        email: body.email,
+        business_name: body.business_name || null,
+        phone: body.phone || null,
+        service: body.service || null,
+        budget: body.budget || null,
+        timeline: body.timeline || null,
+        payment_preference: body.payment_preference || null,
+        message: body.message || null,
+        portfolio: body.portfolio || null,
+        skill_level: body.skill_level || null,
+        services: body.services || null,
+        availability: body.availability || null,
+        status: 'New',
+      });
+    } catch (dbErr) {
+      console.warn('[api/inquiry] Supabase save failed:', dbErr.message);
+    }
+  }
+
+  return res.status(200).json({ success: true });
 };
